@@ -1112,7 +1112,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionForBaseLowerLimitNumericControlUpdate(value);
+                        controller.rangeSelectionForBaseLowerLimitNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionForBaseLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
@@ -1131,7 +1131,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionForBaseUpperLimitNumericControlUpdate(value);
+                        controller.rangeSelectionForBaseUpperLimitNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionForBaseUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
@@ -1151,7 +1151,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionForBaseFuzzinessNumericControlUpdate(value);
+                        controller.rangeSelectionForBaseFuzzinessNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionForBaseFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
@@ -1171,7 +1171,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionForBaseSmoothnessNumericControlUpdate(value);
+                        controller.rangeSelectionForBaseSmoothnessNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionForBaseSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
@@ -1267,7 +1267,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.StarMaskThresholdNumericControlUpdate(value);
+                        controller.starMaskThresholdNumericControlUpdate(value);
                         }
             );
             this.starMaskThresholdNumericControl.toolTip = "<p>Threshold to use with StarMask process.</p>";
@@ -1286,7 +1286,7 @@ function MainView(model, controller) {
                      model.starMaskScale,
                      2, 12.0,
                      function (value) {
-                        controller.StarMaskScaleSpinBoxUpdate(value);
+                        controller.starMaskScaleSpinBoxUpdate(value);
                         }
             );
             this.starMaskScaleSpinBox.toolTip = "<p>Scale to use with StarMask process.</p>",\
@@ -1310,7 +1310,7 @@ function MainView(model, controller) {
                         model.starMaskLargeScale,
                         0, 15,
                         function (value) {
-                           controller.StarMaskLargeScaleSpinBoxUpdate(value);
+                           controller.starMaskLargeScaleSpinBoxUpdate(value);
                            }
                );
                this.starMaskLargeScaleSpinBox.toolTip = "<p>Large-scale to use with StarMask process.</p>";
@@ -1329,7 +1329,7 @@ function MainView(model, controller) {
                         model.starMaskCompensation,
                         1, 4,
                         function (value) {
-                           controller.StarMaskCompensationSpinBoxUpdate(value);
+                           controller.starMaskCompensationSpinBoxUpdate(value);
                            }
                );
                this.starMaskCompensationSpinBox.toolTip = "<p>Compensation to use with StarMask process.</p>";
@@ -1353,7 +1353,7 @@ function MainView(model, controller) {
                         model.starMaskSmallScale,
                         0, 15,
                         function (value) {
-                           controller.StarMaskSmallScaleSpinBoxUpdate(value);
+                           controller.starMaskSmallScaleSpinBoxUpdate(value);
                            }
                );
                this.starMaskSmallScaleSpinBox.toolTip = "<p>Small-scale to use with StarMask process.</p>";
@@ -1374,7 +1374,7 @@ function MainView(model, controller) {
                         model.starMaskSmoothness,
                         0, 40,
                         function (value) {
-                           controller.StarMaskSmoothnessSpinBoxUpdate(value);
+                           controller.starMaskSmoothnessSpinBoxUpdate(value);
                            }
                );
                this.starMaskSmoothnessSpinBox.toolTip = "<p>Smoothness to user with StarMask process.</p>";
@@ -1484,7 +1484,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionLowerLimitNumericControlUpdate(value);
+                        controller.rangeSelectionLowerLimitNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
@@ -1503,7 +1503,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionUpperLimitNumericControlUpdate(value);
+                        controller.rangeSelectionUpperLimitNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
@@ -1523,7 +1523,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionFuzzinessNumericControlUpdate(value);
+                        controller.rangeSelectionFuzzinessNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
@@ -1543,7 +1543,7 @@ function MainView(model, controller) {
                      10,
                      5,
                      function (value) {
-                        controller.RangeSelectionSmoothnessNumericControlUpdate(value);
+                        controller.rangeSelectionSmoothnessNumericControlUpdate(value);
                         }
             );
             this.rangeSelectionSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
