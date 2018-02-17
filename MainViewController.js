@@ -1,4 +1,4 @@
-closeLargeStarMaskPreviewButton
+
 function MainController(model, isViewTarget) {
    this.view = null;
 
