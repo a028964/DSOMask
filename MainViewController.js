@@ -125,23 +125,23 @@ function MainController(model, isViewTarget) {
       model.useHDRMForStarMask = model.defUseHDRMForStarMask
       this.view.useHDRMCheckBox.checked = model.useHDRMForStarMask;
 
-      model.StarMaskThreshold = model.defStarMaskThreshold;
-      this.view.starMaskThresholdNumericControl.setValue(model.StarMaskThreshold);
+      model.starMaskThreshold = model.defStarMaskThreshold;
+      this.view.starMaskThresholdNumericControl.setValue(model.starMaskThreshold);
 
-      model.StarMaskScale = model.defStarMaskScale;
-      this.view.starMaskScaleSpinBox.value = model.StarMaskScale;
+      model.starMaskScale = model.defStarMaskScale;
+      this.view.starMaskScaleSpinBox.value = model.starMaskScale;
 
-      model.StarMaskLargeScale = model.defStarMaskLargeScale;
-      this.view.starMaskLargeScaleSpinBox.value = model.StarMaskLargeScale;
+      model.starMaskLargeScale = model.defStarMaskLargeScale;
+      this.view.starMaskLargeScaleSpinBox.value = model.starMaskLargeScale;
 
-      model.StarMaskSmallScale = model.defStarMaskSmallScale;
-      this.view.starMaskSmallScaleSpinBox.value = model.StarMaskSmallScale;
+      model.starMaskSmallScale = model.defStarMaskSmallScale;
+      this.view.starMaskSmallScaleSpinBox.value = model.starMaskSmallScale;
 
-      model.StarMaskCompensation = model.defStarMaskCompensation;
-      this.view.starMaskCompensationSpinBox.value = model.StarMaskCompensation;
+      model.starMaskCompensation = model.defStarMaskCompensation;
+      this.view.starMaskCompensationSpinBox.value = model.starMaskCompensation;
 
-      model.StarMaskSmoothness = model.defStarMaskSmoothness;
-      this.view.starMaskSmoothnessSpinBox.value = model.StarMaskSmoothness;
+      model.starMaskSmoothness = model.defStarMaskSmoothness;
+      this.view.starMaskSmoothnessSpinBox.value = model.starMaskSmoothness;
 
       model.rangeSelectionForBaseLowerLimit = model.defRangeSelectionForBaseLowerLimit;
       this.view.rangeSelectionForBaseLowerLimitNumericControl.setValue(model.rangeSelectionForBaseLowerLimit);
@@ -425,32 +425,32 @@ function MainController(model, isViewTarget) {
    }
 
    this.starMaskThresholdNumericControlUpdate = function(value) {
-      model.StarMaskThreshold = value;
+      model.starMaskThreshold = value;
       this.enableControls();
    };
 
    this.starMaskScaleSpinBoxUpdate = function(value) {
-      model.StarMaskScale = value;
+      model.starMaskScale = value;
       this.enableControls();
    };
 
    this.starMaskLargeScaleSpinBoxUpdate = function(value) {
-      model.StarMaskLargeScale = value;
+      model.starMaskLargeScale = value;
       this.enableControls();
    };
 
    this.starMaskSmallScaleSpinBoxUpdate = function(value) {
-      model.StarMaskSmallScale = value;
+      model.starMaskSmallScale = value;
       this.enableControls();
    }
 
    this.starMaskCompensationSpinBoxUpdate = function(value) {
-      model.StarMaskCompensation = value;
+      model.starMaskCompensation = value;
       this.enableControls();
    };
 
    this.starMaskSmoothnessSpinBoxUpdate = function(value) {
-      model.StarMaskSmoothness = value;
+      model.starMaskSmoothness = value;
       this.enableControls();
    };
 
@@ -554,27 +554,27 @@ function MainController(model, isViewTarget) {
 
       console.writeln(format(
          "SM threshold: " +
-         model.StarMaskThreshold
+         model.starMaskThreshold
       ));
       console.writeln(format(
          "SM scale: " +
-         model.StarMaskScale
+         model.starMaskScale
       ));
       console.writeln(format(
          "SM large scale: " +
-         model.StarMaskLargeScale
+         model.starMaskLargeScale
       ));
       console.writeln(format(
          "SM small scale: " +
-         model.StarMaskSmallScale
+         model.starMaskSmallScale
       ));
       console.writeln(format(
          "SM compensation: " +
-         model.StarMaskCompensation
+         model.starMaskCompensation
       ));
       console.writeln(format(
          "SM smoothness: " +
-         model.StarMaskSmoothness
+         model.starMaskSmoothness
       ));
 
       console.writeln(format(
@@ -1260,7 +1260,7 @@ function MainView(model, controller) {
             this.starMaskThresholdNumericControl = this.addNumericControl(
                   this.starMaskThresholdPane,
                      "Threshold:",
-                     model.StarMaskThreshold,
+                     model.starMaskThreshold,
                      0.0, 1.0,
                      0, 100,
                      50,
@@ -1283,7 +1283,7 @@ function MainView(model, controller) {
 
             this.starMaskScaleSpinBox = this.addSpinBox(
                   this.starMaskScalePane,
-                     model.StarMaskScale,
+                     model.starMaskScale,
                      2, 12.0,
                      function (value) {
                         controller.StarMaskScaleSpinBoxUpdate(value);
@@ -1307,7 +1307,7 @@ function MainView(model, controller) {
 
                this.starMaskLargeScaleSpinBox = this.addSpinBox(
                      this.starMaskLargeScalePane,
-                        model.StarMaskLargeScale,
+                        model.starMaskLargeScale,
                         0, 15,
                         function (value) {
                            controller.StarMaskLargeScaleSpinBoxUpdate(value);
@@ -1326,7 +1326,7 @@ function MainView(model, controller) {
 
                this.starMaskCompensationSpinBox = this.addSpinBox(
                      this.starMaskCompensationPane,
-                        model.StarMaskCompensation,
+                        model.starMaskCompensation,
                         1, 4,
                         function (value) {
                            controller.StarMaskCompensationSpinBoxUpdate(value);
@@ -1350,7 +1350,7 @@ function MainView(model, controller) {
 
                this.starMaskSmallScaleSpinBox = this.addSpinBox(
                      this.starMaskSmallScalePane,
-                        model.StarMaskSmallScale,
+                        model.starMaskSmallScale,
                         0, 15,
                         function (value) {
                            controller.StarMaskSmallScaleSpinBoxUpdate(value);
@@ -1371,7 +1371,7 @@ function MainView(model, controller) {
 
                this.starMaskSmoothnessSpinBox = this.addSpinBox(
                      this.starMaskSmoothnessPane,
-                        model.StarMaskSmoothness,
+                        model.starMaskSmoothness,
                         0, 40,
                         function (value) {
                            controller.StarMaskSmoothnessSpinBoxUpdate(value);
