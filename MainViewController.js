@@ -980,7 +980,7 @@ function MainView(model, controller) {
                "will be created from the source image after stars are " +
                "removed using ATrousWaveletTransform.</p>",
                function(checked) {
-                  controller.UseRangeSelectionForBaseCheck(checked);
+                  controller.useRangeSelectionForBaseCheck(checked);
                }
             );
 
