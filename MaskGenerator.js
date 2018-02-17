@@ -39,10 +39,10 @@ function MaskGenerator(model, view) {
       var P = new RangeSelection;
       with (P)
       {
-         lowRange = model.RangeSelectionForBaseLowerLimit;
-         highRange = model.RangeSelectionForBaseUpperLimit;
-         fuzziness = model.RangeSelectionForBaseFuzziness;
-         smoothness = model.RangeSelectionForBaseSmoothness;
+         lowRange = model.rangeSelectionForBaseLowerLimit;
+         highRange = model.rangeSelectionForBaseUpperLimit;
+         fuzziness = model.rangeSelectionForBaseFuzziness;
+         smoothness = model.rangeSelectionForBaseSmoothness;
          screening = false;
          toLightness = true;
          invert = false;
@@ -993,10 +993,10 @@ function MaskGenerator(model, view) {
       var P = new RangeSelection;
       with (P)
       {
-         lowRange = model.RangeSelectionForBaseLowerLimit;
-         highRange = model.RangeSelectionForBaseUpperLimit;
-         fuzziness = model.RangeSelectionForBaseFuzziness;
-         smoothness = model.RangeSelectionForBaseSmoothness;
+         lowRange = model.rangeSelectionForBaseLowerLimit;
+         highRange = model.rangeSelectionForBaseUpperLimit;
+         fuzziness = model.rangeSelectionForBaseFuzziness;
+         smoothness = model.rangeSelectionForBaseSmoothness;
          screening = false;
          toLightness = true;
          invert = false;

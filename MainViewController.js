@@ -143,17 +143,17 @@ function MainController(model, isViewTarget) {
       model.StarMaskSmoothness = model.defStarMaskSmoothness;
       this.view.starMaskSmoothnessSpinBox.value = model.StarMaskSmoothness;
 
-      model.RangeSelectionForBaseLowerLimit = model.defRangeSelectionForBaseLowerLimit;
-      this.view.rangeSelectionForBaseLowerLimitNumericControl.setValue(model.RangeSelectionForBaseLowerLimit);
+      model.rangeSelectionForBaseLowerLimit = model.defRangeSelectionForBaseLowerLimit;
+      this.view.rangeSelectionForBaseLowerLimitNumericControl.setValue(model.rangeSelectionForBaseLowerLimit);
 
-      model.RangeSelectionForBaseUpperLimit = model.defRangeSelectionForBaseUpperLimit;
-      this.view.rangeSelectionForBaseUpperLimitNumericControl.setValue(model.RangeSelectionForBaseUpperLimit);
+      model.rangeSelectionForBaseUpperLimit = model.defRangeSelectionForBaseUpperLimit;
+      this.view.rangeSelectionForBaseUpperLimitNumericControl.setValue(model.rangeSelectionForBaseUpperLimit);
 
-      model.RangeSelectionForBaseFuzziness = model.defRangeSelectionForBaseFuzziness;
-      this.view.rangeSelectionForBaseFuzzinessNumericControl.setValue(model.RangeSelectionForBaseFuzziness);
+      model.rangeSelectionForBaseFuzziness = model.defRangeSelectionForBaseFuzziness;
+      this.view.rangeSelectionForBaseFuzzinessNumericControl.setValue(model.rangeSelectionForBaseFuzziness);
 
-      model.RangeSelectionForBaseSmoothness = model.defRangeSelectionForBaseSmoothness;
-      this.view.rangeSelectionForBaseSmoothnessNumericControl.setValue(model.RangeSelectionForBaseSmoothness);
+      model.rangeSelectionForBaseSmoothness = model.defRangeSelectionForBaseSmoothness;
+      this.view.rangeSelectionForBaseSmoothnessNumericControl.setValue(model.rangeSelectionForBaseSmoothness);
 
       model.useRangeSelectionsForLargeStars = model.defUseRangeSelectionsForLargeStars;
       this.view.useRangeSelectionsForLargeStarsCheckBox.checked = model.useRangeSelectionsForLargeStars;
@@ -412,16 +412,16 @@ function MainController(model, isViewTarget) {
    };
 
    this.rangeSelectionForBaseLowerLimitNumericControlUpdate = function(value) {
-      model.RangeSelectionForBaseLowerLimit = value;
+      model.rangeSelectionForBaseLowerLimit = value;
    }
    this.rangeSelectionForBaseUpperLimitNumericControlUpdate = function(value) {
-      model.RangeSelectionForBaseUpperLimit = value;
+      model.rangeSelectionForBaseUpperLimit = value;
    }
    this.rangeSelectionForBaseFuzzinessNumericControlUpdate = function(value) {
-      model.RangeSelectionForBaseFuzziness = value;
+      model.rangeSelectionForBaseFuzziness = value;
    }
    this.rangeSelectionForBaseSmoothnessNumericControlUpdate = function(value) {
-      model.RangeSelectionForBaseSmoothness = value;
+      model.rangeSelectionForBaseSmoothness = value;
    }
 
    this.starMaskThresholdNumericControlUpdate = function(value) {
@@ -582,9 +582,9 @@ function MainController(model, isViewTarget) {
          model.useRangeSelectionForBase
       ));
 
-      console.writeln("Use RS for base lower limit: " + model.RangeSelectionForBaseLowerLimit);
-      console.writeln("Use RS for base upper limit: " + model.RangeSelectionForBaseUpperLimit);
-      console.writeln("Use RS for base fuzziness: " + model.RangeSelectionForBaseFuzziness);
+      console.writeln("Use RS for base lower limit: " + model.rangeSelectionForBaseLowerLimit);
+      console.writeln("Use RS for base upper limit: " + model.rangeSelectionForBaseUpperLimit);
+      console.writeln("Use RS for base fuzziness: " + model.rangeSelectionForBaseFuzziness);
       console.writeln("Use RS for base smoothness: " + model.rangeSelectionSmoothness);
 
       console.writeln(format(
@@ -1089,7 +1089,7 @@ function MainView(model, controller) {
                }
             );
 
-            thiscloseBaseRangeMaskPreviewButton = this.addPushButton(
+            this.closeBaseRangeMaskPreviewButton = this.addPushButton(
                this.previewBaseRangeMaskButtonPane,
                "Close Preview",
                "<p>Close the range mask preview.</p>",
@@ -1105,7 +1105,7 @@ function MainView(model, controller) {
             this.rangeSelectionForBaseLowerLimitNumericControl = this.addNumericControl(
                   this.rangeSelectionForBaseLowerLimitPane,
                      "Lower limit:",
-                     model.RangeSelectionForBaseLowerLimit,
+                     model.rangeSelectionForBaseLowerLimit,
                      0.0, 1.0,
                      0, 100,
                      50,
@@ -1124,7 +1124,7 @@ function MainView(model, controller) {
             this.rangeSelectionForBaseUpperLimitNumericControl = this.addNumericControl(
                   this.rangeSelectionForBaseUpperLimitPane,
                      "Upper limit:",
-                     model.RangeSelectionForBaseUpperLimit,
+                     model.rangeSelectionForBaseUpperLimit,
                      0.0, 1.0,
                      0, 100,
                      50,
@@ -1144,7 +1144,7 @@ function MainView(model, controller) {
             this.rangeSelectionForBaseFuzzinessNumericControl = this.addNumericControl(
                   this.rangeSelectionForBaseFuzzinessPane,
                      "Fuzziness:",
-                     model.RangeSelectionForBaseFuzziness,
+                     model.rangeSelectionForBaseFuzziness,
                      0.0, 1.0,
                      0, 100,
                      50,
@@ -1164,7 +1164,7 @@ function MainView(model, controller) {
             this.rangeSelectionForBaseSmoothnessNumericControl = this.addNumericControl(
                   this.rangeSelectionForBaseSmoothnessPane,
                      "Smoothness:",
-                     model.RangeSelectionForBaseSmoothness,
+                     model.rangeSelectionForBaseSmoothness,
                      0.0, 100.0,
                      0, 100,
                      50,
