@@ -770,24 +770,6 @@ function MainView(model, controller) {
       return groupBox;
    };
 
-   this.addSectionBar = function(title) {
-      var sectionBar = new SectionBar(this);
-      this.sizer.add(sectionBar);
-
-      sectionBar.setTitle("Settings");
-//      sectionBar.sizer = new VerticalSizer;
-//      sectionBar.sizer.margin = 6;
-//      sectionBar.sizer.spacing = 6;
-
-      return sectionBar;
-   };
-   this.addSection = function(bar) {
-      var ctrl = new Control(this);
-      ctrl.sizer = new VerticalSizer;
-      ctrl.sizer.margin = 6;
-      ctrl.sizer.spacing = 6;
-      return ctrl;
-   };
    this.addPane = function(group) {
       var buttonPane = new HorizontalSizer;
       buttonPane.spacing = 6;
@@ -1314,8 +1296,8 @@ function MainView(model, controller) {
                            }
                );
                this.starMaskLargeScaleSpinBox.toolTip = "<p>Large-scale to use with StarMask process.</p>";
-//               this.starMaskLargeScalePane.addStretch();
             }
+
             {
                this.starMaskCompensationPane = this.addHorizontalSizer(this.smPane1);
                this.starMaskCompensationLabel = this.addLabel(
@@ -1333,7 +1315,6 @@ function MainView(model, controller) {
                            }
                );
                this.starMaskCompensationSpinBox.toolTip = "<p>Compensation to use with StarMask process.</p>";
-//               this.starMaskCompensationPane.addStretch();
             }
             this.smPane1.addStretch();
          }
@@ -1357,8 +1338,6 @@ function MainView(model, controller) {
                            }
                );
                this.starMaskSmallScaleSpinBox.toolTip = "<p>Small-scale to use with StarMask process.</p>";
-//               this.starMaskSmallScalePane.addStretch();
-
             }
 
             {
@@ -1378,7 +1357,6 @@ function MainView(model, controller) {
                            }
                );
                this.starMaskSmoothnessSpinBox.toolTip = "<p>Smoothness to user with StarMask process.</p>";
-//               this.starMaskSmoothnessPane.addStretch();
             }
             this.smPane2.addStretch();
          }
@@ -1392,8 +1370,6 @@ function MainView(model, controller) {
 
          {
             this.useRangeSelectionsForLargeStarsPane = this.addPane(this.largeStarsGroupBox);
-
-//            this.useRangeSelectionsForLargeStarsPane.addUnscaledSpacing(this.labelWidth);
 
             this.useRangeSelectionsForLargeStarsPane.addSpacing(
                this.useRangeSelectionsForLargeStarsPane.spacing
