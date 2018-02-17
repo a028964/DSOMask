@@ -18,40 +18,40 @@ function MainModel() {
   this.useClassicStarMask = this.defUseClassicStarMask;
 
   this.defStarMaskThreshold = 0.2;
-  this.StarMaskThreshold = this.defStarMaskThreshold;
+  this.starMaskThreshold = this.defStarMaskThreshold;
 
   this.defStarMaskScale = 5;
-  this.StarMaskScale = this.defStarMaskScale;
+  this.starMaskScale = this.defStarMaskScale;
 
   this.defStarMaskLargeScale = 0;
-  this.StarMaskLargeScale = this.defStarMaskLargeScale;
+  this.starMaskLargeScale = this.defStarMaskLargeScale;
 
   this.defStarMaskSmallScale = 0;
-  this.StarMaskSmallScale = this.defStarMaskSmallScale;
+  this.starMaskSmallScale = this.defStarMaskSmallScale;
 
   this.defStarMaskCompensation = 1;
-  this.StarMaskCompensation = this.defStarMaskCompensation;
+  this.starMaskCompensation = this.defStarMaskCompensation;
 
   this.defStarMaskSmoothness = 8;
-  this.StarMaskSmoothness = this.defStarMaskSmoothness;
+  this.starMaskSmoothness = this.defStarMaskSmoothness;
 
   this.defUseHDRMForStarMask = true;
   this.useHDRMForStarMask = this.defUseHDRMForStarMask;
 
   this.defUseRangeSelectionForBase = true;
-  this.UseRangeSelectionForBase = this.defUseRangeSelectionForBase;
+  this.useRangeSelectionForBase = this.defUseRangeSelectionForBase;
 
   this.defRangeSelectionForBaseLowerLimit = 0.0;
-  this.RangeSelectionForBaseLowerLimit = this.defRangeSelectionForBaseLowerLimit;
+  this.rangeSelectionForBaseLowerLimit = this.defRangeSelectionForBaseLowerLimit;
 
   this.defRangeSelectionForBaseUpperLimit = 1.0;
-  this.RangeSelectionForBaseUpperLimit = this.defRangeSelectionForBaseUpperLimit;
+  this.rangeSelectionForBaseUpperLimit = this.defRangeSelectionForBaseUpperLimit;
 
   this.defRangeSelectionForBaseFuzziness = 0.0;
-  this.RangeSelectionForBaseFuzziness = this.defRangeSelectionForBaseFuzziness;
+  this.rangeSelectionForBaseFuzziness = this.defRangeSelectionForBaseFuzziness;
 
   this.defRangeSelectionForBaseSmoothness = 0.0;
-  this.RangeSelectionForBaseSmoothness = this.defRangeSelectionForBaseSmoothness;
+  this.rangeSelectionForBaseSmoothness = this.defRangeSelectionForBaseSmoothness;
 
   this.defUseRangeSelectionsForLargeStars = true;
   this.useRangeSelectionsForLargeStars = this.defUseRangeSelectionsForLargeStars;
@@ -174,42 +174,42 @@ function MainModel() {
          this.defUseHDRMForStarMask
       );
 
-      this.StarMaskThreshold = this.defaultNumeric(
+      this.starMaskThreshold = this.defaultNumeric(
          Settings.read("starMaskThreshold", DataType_Real64),
          0.0,
          1.0,
          this.defStarMaskThreshold
       );
 
-      this.StarMaskScale = this.defaultNumeric(
+      this.starMaskScale = this.defaultNumeric(
          Settings.read("starMaskScale", DataType_Real64),
          2,
          12,
          this.defStarMaskScale
       );
 
-      this.StarMaskLargeScale = this.defaultNumeric(
+      this.starMaskLargeScale = this.defaultNumeric(
          Settings.read("starMaskLargeScale", DataType_Real64),
          0,
          15,
          this.defStarMaskLargeScale
       );
 
-      this.StarMaskSmallScale = this.defaultNumeric(
+      this.starMaskSmallScale = this.defaultNumeric(
          Settings.read("starMaskSmallScale", DataType_Real64),
          0,
          15,
          this.defStarMaskSmallScale
       );
 
-      this.StarMaskCompensation = this.defaultNumeric(
+      this.starMaskCompensation = this.defaultNumeric(
          Settings.read("starMaskCompensation", DataType_Real64),
          1,
          4,
          this.defStarMaskCompensation
       );
 
-      this.StarMaskSmoothness = this.defaultNumeric(
+      this.starMaskSmoothness = this.defaultNumeric(
          Settings.read("starMaskSmoothness", DataType_Real64),
          1,
          4,
@@ -222,29 +222,29 @@ function MainModel() {
       );
 
 
-      this.UseRangeSelectionForBase = this.defaultBoolean(
+      this.useRangeSelectionForBase = this.defaultBoolean(
          Settings.read("useRangeSelectionForBase", DataType_Boolean),
          this.defUseRangeSelectionForBase
       );
-      this.RangeSelectionForBaseLowerLimit = this.defaultNumeric(
+      this.rangeSelectionForBaseLowerLimit = this.defaultNumeric(
          Settings.read("rangeSelectionForBaseLowerLimit", DataType_Real64),
          0.0,
          1.0,
          this.defRangeSelectionForBaseLowerLimit
       );
-      this.RangeSelectionForBaseUpperLimit = this.defaultNumeric(
+      this.rangeSelectionForBaseUpperLimit = this.defaultNumeric(
          Settings.read("rangeSelectionForBaseUpperLimit", DataType_Real64),
          0.0,
          1.0,
          this.defRangeSelectionForBaseUpperLimit
       );
-      this.RangeSelectionForBaseFuzziness = this.defaultNumeric(
+      this.rangeSelectionForBaseFuzziness = this.defaultNumeric(
          Settings.read("rangeSelectionForBaseFuzziness", DataType_Real64),
          0.0,
          1.0,
          this.defRangeSelectionForBaseFuzziness
       );
-      this.RangeSelectionForBaseSmoothness= this.defaultNumeric(
+      this.rangeSelectionForBaseSmoothness= this.defaultNumeric(
          Settings.read("rangeSelectionForBaseSmoothness", DataType_Real64),
          0.0,
          100.0,
@@ -322,49 +322,49 @@ function MainModel() {
       Settings.write(
          "starMaskThreshold",
          DataType_Real64,
-         this.StarMaskThreshold
+         this.starMaskThreshold
       );
 
       Settings.write(
          "starMaskScale",
          DataType_Real64,
-         this.StarMaskScale
+         this.starMaskScale
       );
 
       Settings.write(
          "starMaskLargeScale",
          DataType_Real64,
-         this.StarMaskLargeScale
+         this.starMaskLargeScale
       );
 
       Settings.write(
          "starMaskSmallScale",
          DataType_Real64,
-         this.StarMaskSmallScale
+         this.starMaskSmallScale
       );
 
       Settings.write(
          "starMaskCompensation",
          DataType_Real64,
-         this.StarMaskCompensation
+         this.starMaskCompensation
       );
 
       Settings.write(
          "starMaskSmoothness",
          DataType_Real64,
-         this.StarMaskSmoothness
+         this.starMaskSmoothness
       );
 
       Settings.write(
          "useRangeSelectionForBase",
          DataType_Boolean,
-         this.UseRangeSelectionForBase
+         this.useRangeSelectionForBase
       );
 
-      Settings.write("rangeSelectionForBaseLowerLimit", DataType_Real64, this.RangeSelectionForBaseLowerLimit);
-      Settings.write("rangeSelectionForBaseUpperLimit", DataType_Real64, this.RangeSelectionForBaseUpperLimit);
-      Settings.write("rangeSelectionForBaseFuzziness", DataType_Real64, this.RangeSelectionForBaseFuzziness);
-      Settings.write("rangeSelectionForBaseSmoothness", DataType_Real64, this.RangeSelectionForBaseSmoothness);
+      Settings.write("rangeSelectionForBaseLowerLimit", DataType_Real64, this.rangeSelectionForBaseLowerLimit);
+      Settings.write("rangeSelectionForBaseUpperLimit", DataType_Real64, this.rangeSelectionForBaseUpperLimit);
+      Settings.write("rangeSelectionForBaseFuzziness", DataType_Real64, this.rangeSelectionForBaseFuzziness);
+      Settings.write("rangeSelectionForBaseSmoothness", DataType_Real64, this.rangeSelectionForBaseSmoothness);
 
 
       Settings.write(
@@ -424,7 +424,7 @@ function MainModel() {
       }
 
       if (Parameters.has("starMaskThreshold")) {
-         this.StarMaskThreshold = this.defaultNumeric(
+         this.starMaskThreshold = this.defaultNumeric(
             Parameters.getReal("starMaskThreshold"),
             0.0,
             1.0,
@@ -433,7 +433,7 @@ function MainModel() {
       }
 
       if (Parameters.has("starMaskScale")) {
-         this.StarMaskScale = this.defaultNumeric(
+         this.starMaskScale = this.defaultNumeric(
             Parameters.getReal("starMaskScale"),
             2,
             12,
@@ -442,7 +442,7 @@ function MainModel() {
       }
 
       if (Parameters.has("starMaskLargeScale")) {
-         this.StarMaskLargeScale = this.defaultNumeric(
+         this.starMaskLargeScale = this.defaultNumeric(
             Parameters.getReal("starMaskLargeScale"),
             0,
             15,
@@ -460,7 +460,7 @@ function MainModel() {
       }
 
       if (Parameters.has("starMaskCompensation")) {
-         this.StarMaskCompensation = this.defaultNumeric(
+         this.starMaskCompensation = this.defaultNumeric(
             Parameters.getReal("starMaskCompensation"),
             1,
             4,
@@ -469,7 +469,7 @@ function MainModel() {
       }
 
       if (Parameters.has("starMaskSmoothness")) {
-         this.StarMaskSmoothness = this.defaultNumeric(
+         this.starMaskSmoothness = this.defaultNumeric(
             Parameters.getReal("starMaskSmoothness"),
             1,
             4,
@@ -478,14 +478,14 @@ function MainModel() {
       }
 
       if (Parameters.has("useRangeSelectionForBase")) {
-         this.UseRangeSelectionForBase = this.defaultBoolean(
+         this.useRangeSelectionForBase = this.defaultBoolean(
             Parameters.getBoolean("useRangeSelectionForBase"),
             this.defUseRangeSelectionForBase
          );
       }
 
       if (Parameters.has("rangeSelectionForBaseLowerLimit")) {
-         this.RangeSelectionForBaseLowerLimit = this.defaultNumeric(
+         this.rangeSelectionForBaseLowerLimit = this.defaultNumeric(
             Parameters.getReal("rangeSelectionForBaseLowerLimit"),
             0.0,
             1.0,
@@ -493,7 +493,7 @@ function MainModel() {
          );
       }
       if (Parameters.has("rangeSelectionForBaseUpperLimit")) {
-         this.RangeSelectionForBaseUpperLimits = this.defaultNumeric(
+         this.rangeSelectionForBaseUpperLimits = this.defaultNumeric(
             Parameters.getReal("rangeSelectionForBaseUpperLimit"),
             0.0,
             1.0,
@@ -501,7 +501,7 @@ function MainModel() {
          );
       }
       if (Parameters.has("rangeSelectionForBaseFuzziness")) {
-         this.RangeSelectionForBaseFuzziness = this.defaultNumeric(
+         this.rangeSelectionForBaseFuzziness = this.defaultNumeric(
             Parameters.getReal("rangeSelectionForBaseFuzziness"),
             0.0,
             1.0,
@@ -509,7 +509,7 @@ function MainModel() {
          );
       }
       if (Parameters.has("rangeSelectionForBaseSmoothness")) {
-         this.RangeSelectionForBaseSmoothness = this.defaultNumeric(
+         this.rangeSelectionForBaseSmoothness = this.defaultNumeric(
             Parameters.getReal("rangeSelectionForBaseSmoothness"),
             0.0,
             100.0,
@@ -579,18 +579,18 @@ function MainModel() {
 
       Parameters.set("useClassicStarMask", this.useClassicStarMask);
       Parameters.set("useHDRMForStarMask", this.useHDRMForStarMask);
-      Parameters.set("starMaskThreshold", this.StarMaskThreshold);
-      Parameters.set("starMaskScale", this.StarMaskScale);
-      Parameters.set("starMaskLargeScale", this.StarMaskLargeScale);
-      Parameters.set("starMaskSmallScale", this.StarMaskSmallScale);
-      Parameters.set("starMaskCompensation", this.StarMaskCompensation);
-      Parameters.set("starMaskSmoothness", this.StarMaskSmoothness);
+      Parameters.set("starMaskThreshold", this.starMaskThreshold);
+      Parameters.set("starMaskScale", this.starMaskScale);
+      Parameters.set("starMaskLargeScale", this.starMaskLargeScale);
+      Parameters.set("starMaskSmallScale", this.starMaskSmallScale);
+      Parameters.set("starMaskCompensation", this.starMaskCompensation);
+      Parameters.set("starMaskSmoothness", this.starMaskSmoothness);
 
-      Parameters.set("useRangeSelectionForBase", this.UseRangeSelectionForBase);
-      Parameters.set("rangeSelectionForBaseLowerLimit", this.RangeSelectionForBaseLowerLimit);
-      Parameters.set("rangeSelectionForBaseUpperLimit", this.RangeSelectionForBaseUpperLimit);
-      Parameters.set("rangeSelectionForBaseFuzziness", this.RangeSelectionForBaseFuzziness);
-      Parameters.set("rangeSelectionForBaseSmoothness", this.RangeSelectionForBaseSmoothness);
+      Parameters.set("useRangeSelectionForBase", this.useRangeSelectionForBase);
+      Parameters.set("rangeSelectionForBaseLowerLimit", this.rangeSelectionForBaseLowerLimit);
+      Parameters.set("rangeSelectionForBaseUpperLimit", this.rangeSelectionForBaseUpperLimit);
+      Parameters.set("rangeSelectionForBaseFuzziness", this.rangeSelectionForBaseFuzziness);
+      Parameters.set("rangeSelectionForBaseSmoothness", this.rangeSelectionForBaseSmoothness);
 
       Parameters.set("useRangeSelectionsForLargeStars", this.useRangeSelectionsForLargeStars);
 

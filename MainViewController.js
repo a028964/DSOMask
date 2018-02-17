@@ -210,7 +210,7 @@ function MainController(model, isViewTarget) {
       this.view.resetButton.enabled = false;
 
       this.view.UseRangeSelectionForBaseCheckBox.enabled = false;
-      this.view.previewButton.enabled = false;
+      this.view.previewBaseRangeMaskButton.enabled = false;
       this.view.closePreviewButton.enabled = false;
       this.view.RangeSelectionForBaseLowerLimitNumericControl.enabled = false;
       this.view.RangeSelectionForBaseUpperLimitNumericControl.enabled = false;
@@ -290,10 +290,10 @@ function MainController(model, isViewTarget) {
          this.view.RangeSelectionForBaseSmoothnessNumericControl.enabled = true;
          if ( model.imageView != null )
          {
-            this.view.previewButton.enabled = true;
+            this.view.previewBaseRangeMaskButton.enabled = true;
          }
          else {
-            this.view.previewButton.enabled = false;
+            this.view.previewBaseRangeMaskButton.enabled = false;
          }
          this.view.closePreviewButton.enabled = false;
       }
@@ -303,7 +303,7 @@ function MainController(model, isViewTarget) {
          this.view.RangeSelectionForBaseUpperLimitNumericControl.enabled = false;
          this.view.RangeSelectionForBaseFuzzinessNumericControl.enabled = false;
          this.view.RangeSelectionForBaseSmoothnessNumericControl.enabled = false;
-         this.view.previewButton.enabled = false;
+         this.view.previewBaseRangeMaskButton.enabled = false;
          this.view.closePreviewButton.enabled = false;
       }
 
@@ -605,7 +605,7 @@ function MainController(model, isViewTarget) {
 
    this.previewBaseRangeMask = function() {
       this.disableControls();
-      this.view.previewButton.enabled = false;
+      this.view.previewBaseRangeMaskButton.enabled = false;
       this.view.closePreviewButton.enabled = true;
 
       console.show();
@@ -692,7 +692,7 @@ function MainController(model, isViewTarget) {
    };
 
    this.closeRangeMaskPreview = function() {
-      //this.view.previewButton.enabled = true;
+      //this.view.previewBaseRangeMaskButton.enabled = true;
       //this.view.closePreviewButton.enabled = false;
       if ( model.maskPreview != null ) {
          model.maskPreview.forceClose();
@@ -1078,10 +1078,10 @@ function MainView(model, controller) {
       {
 
          {
-            this.previewButtonPane = this.addPane(this.rangeSelectionGroupBox);
+            this.previewBaseRangeMaskButtonPane = this.addPane(this.rangeSelectionGroupBox);
 
-            this.previewButton = this.addPushButton(
-               this.previewButtonPane,
+            this.previewBaseRangeMaskButton = this.addPushButton(
+               this.previewBaseRangeMaskButtonPane,
                "Preview",
                "<p>Preview range mask.</p>",
                function() {
@@ -1090,7 +1090,7 @@ function MainView(model, controller) {
             );
 
             this.closePreviewButton = this.addPushButton(
-               this.previewButtonPane,
+               this.previewBaseRangeMaskButtonPane,
                "Close Preview",
                "<p>Close the range mask preview.</p>",
                function() {
