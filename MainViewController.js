@@ -295,7 +295,7 @@ function MainController(model, isViewTarget) {
          else {
             this.view.previewBaseRangeMaskButton.enabled = false;
          }
-         this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
+         this.view.closeBaseRangeMaskPreviewButton.enabled = false;
       }
       else
       {
@@ -304,7 +304,7 @@ function MainController(model, isViewTarget) {
          this.view.rangeSelectionForBaseFuzzinessNumericControl.enabled = false;
          this.view.rangeSelectionForBaseSmoothnessNumericControl.enabled = false;
          this.view.previewBaseRangeMaskButton.enabled = false;
-         this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
+         this.view.closeBaseRangeMaskPreviewButton.enabled = false;
       }
 
       if ( model.protectStars )
@@ -606,7 +606,7 @@ function MainController(model, isViewTarget) {
    this.previewBaseRangeMask = function() {
       this.disableControls();
       this.view.previewBaseRangeMaskButton.enabled = false;
-      this.viewcloseBaseRangeMaskPreviewButton.enabled = true;
+      this.view.closeBaseRangeMaskPreviewButton.enabled = true;
 
       console.show();
       console.flush();
@@ -693,7 +693,7 @@ function MainController(model, isViewTarget) {
 
    this.closePreview = function() {
       //this.view.previewBaseRangeMaskButton.enabled = true;
-      //this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
+      //this.view.closeBaseRangeMaskPreviewButton.enabled = false;
       if ( model.maskPreview != null ) {
          model.maskPreview.forceClose();
          model.maskPreview = null;
