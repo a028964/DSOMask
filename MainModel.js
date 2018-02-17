@@ -1,126 +1,126 @@
 
 function MainModel() {
-   // Image view.
-   this.imageViewFormat = "%s";
-   this.imageView = null;
-   this.rangeMaskPreview = null;
+  // Image view.
+  this.imageViewFormat = "%s";
+  this.imageView = null;
+  this.maskPreview = null;
 
-   this.defGrayPercent = 0.4;
-   this.grayPercent = this.defGrayPercent;
+  this.defGrayPercent = 0.4;
+  this.grayPercent = this.defGrayPercent;
 
-   this.defProtectStars = true;
-   this.protectStars = this.defProtectStars;
+  this.defProtectStars = true;
+  this.protectStars = this.defProtectStars;
 
-   this.defKeepMasksOpen = false;
-   this.keepMasksOpen = this.defKeepMasksOpen;
+  this.defKeepMasksOpen = false;
+  this.keepMasksOpen = this.defKeepMasksOpen;
 
-   this.defUseClassicStarMask = false;
-   this.useClassicStarMask = this.defUseClassicStarMask;
+  this.defUseClassicStarMask = false;
+  this.useClassicStarMask = this.defUseClassicStarMask;
 
-	this.defSMThreshold = 0.2;
-	this.SMThreshold = this.defSMThreshold;
+  this.defStarMaskThreshold = 0.2;
+  this.StarMaskThreshold = this.defStarMaskThreshold;
 
-	this.defSMScale = 5;
-	this.SMScale = this.defSMScale;
+  this.defStarMaskScale = 5;
+  this.StarMaskScale = this.defStarMaskScale;
 
-	this.defSMLargeScale = 0;
-	this.SMLargeScale = this.defSMLargeScale;
+  this.defStarMaskLargeScale = 0;
+  this.StarMaskLargeScale = this.defStarMaskLargeScale;
 
-	this.defSMSmallScale = 0;
-	this.SMSmallScale = this.defSMSmallScale;
+  this.defStarMaskSmallScale = 0;
+  this.StarMaskSmallScale = this.defStarMaskSmallScale;
 
-	this.defSMCompensation = 1;
-	this.SMCompensation = this.defSMCompensation;
+  this.defStarMaskCompensation = 1;
+  this.StarMaskCompensation = this.defStarMaskCompensation;
 
-	this.defSMSmoothness = 8;
-	this.SMSmoothness = this.defSMSmoothness;
+  this.defStarMaskSmoothness = 8;
+  this.StarMaskSmoothness = this.defStarMaskSmoothness;
 
-   this.defUseHDRMForStarMask = true;
-   this.useHDRMForStarMask = this.defUseHDRMForStarMask;
+  this.defUseHDRMForStarMask = true;
+  this.useHDRMForStarMask = this.defUseHDRMForStarMask;
 
-   this.defUseRSForBase = true;
-   this.useRSForBase = this.defUseRSForBase;
+  this.defUseRangeSelectionForBase = true;
+  this.UseRangeSelectionForBase = this.defUseRangeSelectionForBase;
 
-   this.defRSForBaseLowerLimit = 0.0;
-   this.RSForBaseLowerLimit = this.defRSForBaseLowerLimit;
+  this.defRangeSelectionForBaseLowerLimit = 0.0;
+  this.RangeSelectionForBaseLowerLimit = this.defRangeSelectionForBaseLowerLimit;
 
-   this.defRSForBaseUpperLimit = 1.0;
-   this.RSForBaseUpperLimit = this.defRSForBaseUpperLimit;
+  this.defRangeSelectionForBaseUpperLimit = 1.0;
+  this.RangeSelectionForBaseUpperLimit = this.defRangeSelectionForBaseUpperLimit;
 
-   this.defRSForBaseFuzziness = 0.0;
-   this.RSForBaseFuzziness = this.defRSForBaseFuzziness;
+  this.defRangeSelectionForBaseFuzziness = 0.0;
+  this.RangeSelectionForBaseFuzziness = this.defRangeSelectionForBaseFuzziness;
 
-   this.defRSForBaseSmoothness = 0.0;
-   this.RSForBaseSmoothness = this.defRSForBaseSmoothness;
+  this.defRangeSelectionForBaseSmoothness = 0.0;
+  this.RangeSelectionForBaseSmoothness = this.defRangeSelectionForBaseSmoothness;
 
-   this.defUseRangeSelectionsForLargeStars = true;
-   this.useRangeSelectionsForLargeStars = this.defUseRangeSelectionsForLargeStars;
+  this.defUseRangeSelectionsForLargeStars = true;
+  this.useRangeSelectionsForLargeStars = this.defUseRangeSelectionsForLargeStars;
 
-   this.totalRangeSelections = 3;
+  this.totalRangeSelections = 3;
 
-   this.rangeSelectionColumnNames = new Array(
-      "RS",
-      "Lower Limit",
-      "Upper Limit",
-      "Fuzziness",
-      "Smoothness"
-   )
+  this.rangeSelectionColumnNames = new Array(
+    "RS",
+    "Lower Limit",
+    "Upper Limit",
+    "Fuzziness",
+    "Smoothness"
+  )
 
-   this.defRangeSelectionsUsed = new Array(
-      true,
-      true,
-      false
-   );
-   this.rangeSelectionsUsed = new Array(
-      true,
-      true,
-      false
-   );
+  this.defRangeSelectionsUsed = new Array(
+    true,
+    true,
+    false
+  );
+  this.rangeSelectionsUsed = new Array(
+    true,
+    true,
+    false
+  );
 
-   this.defRangeSelectionLowerLimits = new Array(
-      0.8,
-      0.15,
-      0.06
-   );
-   this.rangeSelectionLowerLimits = new Array(
-      0.8,
-      0.15,
-      0.06
-   );
+  this.defRangeSelectionLowerLimits = new Array(
+    0.8,
+    0.15,
+    0.06
+  );
+  this.rangeSelectionLowerLimits = new Array(
+    0.8,
+    0.15,
+    0.06
+  );
 
-   this.defRangeSelectionUpperLimits = new Array(
-      1.0,
-      1.0,
-      1.0
-   );
-   this.rangeSelectionUpperLimits = new Array(
-      1.0,
-      1.0,
-      1.0
-   );
+  this.defRangeSelectionUpperLimits = new Array(
+    1.0,
+    1.0,
+    1.0
+  );
+  this.rangeSelectionUpperLimits = new Array(
+    1.0,
+    1.0,
+    1.0
+  );
 
-   this.defRangeSelectionFuzziness = new Array(
-      0.0,
-      0.0,
-      0.0
-   );
-   this.rangeSelectionFuzziness = new Array(
-      0.0,
-      0.0,
-      0.0
-   );
+  this.defRangeSelectionFuzziness = new Array(
+    0.0,
+    0.0,
+    0.0
+  );
+  this.rangeSelectionFuzziness = new Array(
+    0.0,
+    0.0,
+    0.0
+  );
 
-   this.defRangeSelectionSmoothness = new Array(
-      8.0,
-      8.0,
-      12.0
-   );
+  this.defRangeSelectionSmoothness = new Array(
+    8.0,
+    8.0,
+    12.0
+  );
 
-   this.rangeSelectionSmoothness = new Array(
-      8.0,
-      8.0,
-      12.0
-   );
+  this.rangeSelectionSmoothness = new Array(
+    8.0,
+    8.0,
+    12.0
+  );
 
    // Gives numeric if well defined and within range, otherwise a default.
    this.defaultNumeric = function(numeric, min, max, def) {
@@ -174,46 +174,46 @@ function MainModel() {
          this.defUseHDRMForStarMask
       );
 
-      this.SMThreshold = this.defaultNumeric(
-         Settings.read("SMThreshold", DataType_Real64),
+      this.StarMaskThreshold = this.defaultNumeric(
+         Settings.read("starMaskThreshold", DataType_Real64),
          0.0,
          1.0,
-         this.defSMThreshold
+         this.defStarMaskThreshold
       );
 
-      this.SMScale = this.defaultNumeric(
-         Settings.read("SMScale", DataType_Real64),
+      this.StarMaskScale = this.defaultNumeric(
+         Settings.read("starMaskScale", DataType_Real64),
          2,
          12,
-         this.defSMScale
+         this.defStarMaskScale
       );
 
-      this.SMLargeScale = this.defaultNumeric(
-         Settings.read("SMLargeScale", DataType_Real64),
+      this.StarMaskLargeScale = this.defaultNumeric(
+         Settings.read("starMaskLargeScale", DataType_Real64),
          0,
          15,
-         this.defSMLargeScale
+         this.defStarMaskLargeScale
       );
 
-      this.SMSmallScale = this.defaultNumeric(
-         Settings.read("SMSmallScale", DataType_Real64),
+      this.StarMaskSmallScale = this.defaultNumeric(
+         Settings.read("starMaskSmallScale", DataType_Real64),
          0,
          15,
-         this.defSMSmallScale
+         this.defStarMaskSmallScale
       );
 
-      this.SMCompensation = this.defaultNumeric(
-         Settings.read("SMCompensation", DataType_Real64),
+      this.StarMaskCompensation = this.defaultNumeric(
+         Settings.read("starMaskCompensation", DataType_Real64),
          1,
          4,
-         this.defSMCompensation
+         this.defStarMaskCompensation
       );
 
-      this.SMSmoothness = this.defaultNumeric(
-         Settings.read("SMSmoothness", DataType_Real64),
+      this.StarMaskSmoothness = this.defaultNumeric(
+         Settings.read("starMaskSmoothness", DataType_Real64),
          1,
          4,
-         this.defSMSmoothness
+         this.defStarMaskSmoothness
       );
 
       this.useRangeSelectionsForLargeStars = this.defaultBoolean(
@@ -222,60 +222,60 @@ function MainModel() {
       );
 
 
-      this.useRSForBase = this.defaultBoolean(
-         Settings.read("useRSForBase", DataType_Boolean),
-         this.defUseRSForBase
+      this.UseRangeSelectionForBase = this.defaultBoolean(
+         Settings.read("useRangeSelectionForBase", DataType_Boolean),
+         this.defUseRangeSelectionForBase
       );
-      this.RSForBaseLowerLimit = this.defaultNumeric(
-         Settings.read("RSForBaseLowerLimit", DataType_Real64),
+      this.RangeSelectionForBaseLowerLimit = this.defaultNumeric(
+         Settings.read("rangeSelectionForBaseLowerLimit", DataType_Real64),
          0.0,
          1.0,
-         this.defRSForBaseLowerLimit
+         this.defRangeSelectionForBaseLowerLimit
       );
-      this.RSForBaseUpperLimit = this.defaultNumeric(
-         Settings.read("RSForBaseUpperLimit", DataType_Real64),
+      this.RangeSelectionForBaseUpperLimit = this.defaultNumeric(
+         Settings.read("rangeSelectionForBaseUpperLimit", DataType_Real64),
          0.0,
          1.0,
-         this.defRSForBaseUpperLimit
+         this.defRangeSelectionForBaseUpperLimit
       );
-      this.RSForBaseFuzziness = this.defaultNumeric(
-         Settings.read("RSForBaseFuzziness", DataType_Real64),
+      this.RangeSelectionForBaseFuzziness = this.defaultNumeric(
+         Settings.read("rangeSelectionForBaseFuzziness", DataType_Real64),
          0.0,
          1.0,
-         this.defRSForBaseFuzziness
+         this.defRangeSelectionForBaseFuzziness
       );
-      this.RSForBaseSmoothness= this.defaultNumeric(
-         Settings.read("RSForBaseSmoothness", DataType_Real64),
+      this.RangeSelectionForBaseSmoothness= this.defaultNumeric(
+         Settings.read("rangeSelectionForBaseSmoothness", DataType_Real64),
          0.0,
          100.0,
-         this.defRSForBaseSmoothness
+         this.defRangeSelectionForBaseSmoothness
       );
 
       for (var i = 0; i < this.totalRangeSelections; i++) {
          this.rangeSelectionsUsed[i] = this.defaultBoolean(
-            Settings.read("RSEnabled" + i, DataType_Boolean),
+            Settings.read("rangeSelectionEnabled" + i, DataType_Boolean),
             this.defRangeSelectionsUsed[i]
          );
          this.rangeSelectionLowerLimits[i] = this.defaultNumeric(
-            Settings.read("RSLowerLimit" + i, DataType_Real64),
+            Settings.read("rangeSelectionLowerLimit" + i, DataType_Real64),
             0.0,
             1.0,
             this.defRangeSelectionLowerLimits[i]
          );
          this.rangeSelectionUpperLimits[i] = this.defaultNumeric(
-            Settings.read("RSUpperLimit" + i, DataType_Real64),
+            Settings.read("rangeSelectionUpperLimit" + i, DataType_Real64),
             0.0,
             1.0,
             this.defRangeSelectionUpperLimits[i]
          );
          this.rangeSelectionFuzziness[i] = this.defaultNumeric(
-            Settings.read("RSFuzziness" + i, DataType_Real64),
+            Settings.read("rangeSelectionFuzziness" + i, DataType_Real64),
             0.0,
             1.0,
             this.defRangeSelectionFuzziness[i]
          );
          this.rangeSelectionSmoothness[i] = this.defaultNumeric(
-            Settings.read("RSSmoothness" + i, DataType_Real64),
+            Settings.read("rangeSelectionSmoothness" + i, DataType_Real64),
             0.0,
             100.0,
             this.defRangeSelectionSmoothness[i]
@@ -320,51 +320,51 @@ function MainModel() {
       );
 
       Settings.write(
-         "SMThreshold",
+         "starMaskThreshold",
          DataType_Real64,
-         this.SMThreshold
+         this.StarMaskThreshold
       );
 
       Settings.write(
-         "SMScale",
+         "starMaskScale",
          DataType_Real64,
-         this.SMScale
+         this.StarMaskScale
       );
 
       Settings.write(
-         "SMLargeScale",
+         "starMaskLargeScale",
          DataType_Real64,
-         this.SMLargeScale
+         this.StarMaskLargeScale
       );
 
       Settings.write(
-         "SMSmallScale",
+         "starMaskSmallScale",
          DataType_Real64,
-         this.SMSmallScale
+         this.StarMaskSmallScale
       );
 
       Settings.write(
-         "SMCompensation",
+         "starMaskCompensation",
          DataType_Real64,
-         this.SMCompensation
+         this.StarMaskCompensation
       );
 
       Settings.write(
-         "SMSmoothness",
+         "starMaskSmoothness",
          DataType_Real64,
-         this.SMSmoothness
+         this.StarMaskSmoothness
       );
 
       Settings.write(
-         "useRSForBase",
+         "useRangeSelectionForBase",
          DataType_Boolean,
-         this.useRSForBase
+         this.UseRangeSelectionForBase
       );
 
-      Settings.write("RSForBaseLowerLimit", DataType_Real64, this.RSForBaseLowerLimit);
-      Settings.write("RSForBaseUpperLimit", DataType_Real64, this.RSForBaseUpperLimit);
-      Settings.write("RSForBaseFuzziness", DataType_Real64, this.RSForBaseFuzziness);
-      Settings.write("RSForBaseSmoothness", DataType_Real64, this.RSForBaseSmoothness);
+      Settings.write("rangeSelectionForBaseLowerLimit", DataType_Real64, this.RangeSelectionForBaseLowerLimit);
+      Settings.write("rangeSelectionForBaseUpperLimit", DataType_Real64, this.RangeSelectionForBaseUpperLimit);
+      Settings.write("rangeSelectionForBaseFuzziness", DataType_Real64, this.RangeSelectionForBaseFuzziness);
+      Settings.write("rangeSelectionForBaseSmoothness", DataType_Real64, this.RangeSelectionForBaseSmoothness);
 
 
       Settings.write(
@@ -374,11 +374,11 @@ function MainModel() {
       );
 
       for (var i = 0; i < this.totalRangeSelections; i++) {
-         Settings.write("RSEnabled" + i, DataType_Boolean, this.rangeSelectionsUsed[i]);
-         Settings.write("RSLowerLimit" + i, DataType_Real64, this.rangeSelectionLowerLimits[i]);
-         Settings.write("RSUpperLimit" + i, DataType_Real64, this.rangeSelectionUpperLimits[i]);
-         Settings.write("RSFuzziness" + i, DataType_Real64, this.rangeSelectionFuzziness[i]);
-         Settings.write("RSSmoothness" + i, DataType_Real64, this.rangeSelectionSmoothness[i]);
+         Settings.write("rangeSelectionEnabled" + i, DataType_Boolean, this.rangeSelectionsUsed[i]);
+         Settings.write("rangeSelectionLowerLimit" + i, DataType_Real64, this.rangeSelectionLowerLimits[i]);
+         Settings.write("rangeSelectionUpperLimit" + i, DataType_Real64, this.rangeSelectionUpperLimits[i]);
+         Settings.write("rangeSelectionFuzziness" + i, DataType_Real64, this.rangeSelectionFuzziness[i]);
+         Settings.write("rangeSelectionSmoothness" + i, DataType_Real64, this.rangeSelectionSmoothness[i]);
       }
 
    };
@@ -423,97 +423,97 @@ function MainModel() {
          );
       }
 
-      if (Parameters.has("SMThreshold")) {
-         this.SMThreshold = this.defaultNumeric(
-            Parameters.getReal("SMThreshold"),
+      if (Parameters.has("starMaskThreshold")) {
+         this.StarMaskThreshold = this.defaultNumeric(
+            Parameters.getReal("starMaskThreshold"),
             0.0,
             1.0,
-            this.defSMThreshold
+            this.defStarMaskThreshold
          );
       }
 
-      if (Parameters.has("SMScale")) {
-         this.SMScale = this.defaultNumeric(
-            Parameters.getReal("SMScale"),
+      if (Parameters.has("starMaskScale")) {
+         this.StarMaskScale = this.defaultNumeric(
+            Parameters.getReal("starMaskScale"),
             2,
             12,
-            this.defSMScale
+            this.defStarMaskScale
          );
       }
 
-      if (Parameters.has("SMLargeScale")) {
-         this.SMLargeScale = this.defaultNumeric(
-            Parameters.getReal("SMLargeScale"),
+      if (Parameters.has("starMaskLargeScale")) {
+         this.StarMaskLargeScale = this.defaultNumeric(
+            Parameters.getReal("starMaskLargeScale"),
             0,
             15,
-            this.defSMLargeScale
+            this.defStarMaskLargeScale
          );
       }
 
-      if (Parameters.has("SMSmallScale")) {
+      if (Parameters.has("starMaskSmallScale")) {
          this.SMLargerScale = this.defaultNumeric(
-            Parameters.getReal("SMSmallScale"),
+            Parameters.getReal("starMaskSmallScale"),
             0,
             15,
-            this.defSMSmallScale
+            this.defStarMaskSmallScale
          );
       }
 
-      if (Parameters.has("SMCompensation")) {
-         this.SMCompensation = this.defaultNumeric(
-            Parameters.getReal("SMCompensation"),
+      if (Parameters.has("starMaskCompensation")) {
+         this.StarMaskCompensation = this.defaultNumeric(
+            Parameters.getReal("starMaskCompensation"),
             1,
             4,
-            this.defSMCompensation
+            this.defStarMaskCompensation
          );
       }
 
-      if (Parameters.has("SMSmoothness")) {
-         this.SMSmoothness = this.defaultNumeric(
-            Parameters.getReal("SMSmoothness"),
+      if (Parameters.has("starMaskSmoothness")) {
+         this.StarMaskSmoothness = this.defaultNumeric(
+            Parameters.getReal("starMaskSmoothness"),
             1,
             4,
-            this.defSMSmoothness
+            this.defStarMaskSmoothness
          );
       }
 
-      if (Parameters.has("useRSForBase")) {
-         this.useRSForBase = this.defaultBoolean(
-            Parameters.getBoolean("useRSForBase"),
-            this.defUseRSForBase
+      if (Parameters.has("useRangeSelectionForBase")) {
+         this.UseRangeSelectionForBase = this.defaultBoolean(
+            Parameters.getBoolean("useRangeSelectionForBase"),
+            this.defUseRangeSelectionForBase
          );
       }
 
-      if (Parameters.has("RSForBaseLowerLimit")) {
-         this.RSForBaseLowerLimit = this.defaultNumeric(
-            Parameters.getReal("RSForBaseLowerLimit"),
+      if (Parameters.has("rangeSelectionForBaseLowerLimit")) {
+         this.RangeSelectionForBaseLowerLimit = this.defaultNumeric(
+            Parameters.getReal("rangeSelectionForBaseLowerLimit"),
             0.0,
             1.0,
-            this.defRSForBaseLowerLimit
+            this.defRangeSelectionForBaseLowerLimit
          );
       }
-      if (Parameters.has("RSForBaseUpperLimit")) {
-         this.RSForBaseUpperLimits = this.defaultNumeric(
-            Parameters.getReal("RSForBaseUpperLimit"),
+      if (Parameters.has("rangeSelectionForBaseUpperLimit")) {
+         this.RangeSelectionForBaseUpperLimits = this.defaultNumeric(
+            Parameters.getReal("rangeSelectionForBaseUpperLimit"),
             0.0,
             1.0,
-            this.defRSForBaseUpperLimit
+            this.defRangeSelectionForBaseUpperLimit
          );
       }
-      if (Parameters.has("RSForBaseFuzziness")) {
-         this.RSForBaseFuzziness = this.defaultNumeric(
-            Parameters.getReal("RSForBaseFuzziness"),
+      if (Parameters.has("rangeSelectionForBaseFuzziness")) {
+         this.RangeSelectionForBaseFuzziness = this.defaultNumeric(
+            Parameters.getReal("rangeSelectionForBaseFuzziness"),
             0.0,
             1.0,
-            this.defRSForBaseFuzziness
+            this.defRangeSelectionForBaseFuzziness
          );
       }
-      if (Parameters.has("RSForBaseSmoothness")) {
-         this.RSForBaseSmoothness = this.defaultNumeric(
-            Parameters.getReal("RSForBaseSmoothness"),
+      if (Parameters.has("rangeSelectionForBaseSmoothness")) {
+         this.RangeSelectionForBaseSmoothness = this.defaultNumeric(
+            Parameters.getReal("rangeSelectionForBaseSmoothness"),
             0.0,
             100.0,
-            this.defRSForBaseSmoothness
+            this.defRangeSelectionForBaseSmoothness
          );
       }
 
@@ -525,39 +525,39 @@ function MainModel() {
       }
 
       for (var i = 0; i < this.totalRangeSelections; i++) {
-         if (Parameters.has("RSEnabled" + i)) {
+         if (Parameters.has("rangeSelectionEnabled" + i)) {
             this.rangeSelectionsUsed[i] = this.defaultBoolean(
-               Parameters.getBoolean("RSEnabled" + i),
+               Parameters.getBoolean("rangeSelectionEnabled" + i),
                this.defRangeSelectionsUsed[i]
             );
          }
-         if (Parameters.has("RSLowerLimit" + i)) {
+         if (Parameters.has("rangeSelectionLowerLimit" + i)) {
             this.rangeSelectionLowerLimits[i] = this.defaultNumeric(
-               Parameters.getReal("RSLowerLimit" + i),
+               Parameters.getReal("rangeSelectionLowerLimit" + i),
                0.0,
                1.0,
                this.defRangeSelectionLowerLimits[i]
             );
          }
-         if (Parameters.has("RSUpperLimit" + i)) {
+         if (Parameters.has("rangeSelectionUpperLimit" + i)) {
             this.rangeSelectionUpperLimits[i] = this.defaultNumeric(
-               Parameters.getReal("RSUpperLimit" + i),
+               Parameters.getReal("rangeSelectionUpperLimit" + i),
                0.0,
                1.0,
                this.defRangeSelectionUpperLimits[i]
             );
          }
-         if (Parameters.has("RSFuzziness" + i)) {
+         if (Parameters.has("rangeSelectionFuzziness" + i)) {
             this.rangeSelectionFuzziness[i] = this.defaultNumeric(
-               Parameters.getReal("RSFuzziness" + i),
+               Parameters.getReal("rangeSelectionFuzziness" + i),
                0.0,
                1.0,
                this.defRangeSelectionFuzziness[i]
             );
          }
-         if (Parameters.has("RSSmoothness" + i)) {
+         if (Parameters.has("rangeSelectionSmoothness" + i)) {
             this.rangeSelectionSmoothness[i] = this.defaultNumeric(
-               Parameters.getReal("RSSmoothness" + i),
+               Parameters.getReal("rangeSelectionSmoothness" + i),
                0.0,
                100.0,
                this.defRangeSelectionSmoothness[i]
@@ -579,27 +579,27 @@ function MainModel() {
 
       Parameters.set("useClassicStarMask", this.useClassicStarMask);
       Parameters.set("useHDRMForStarMask", this.useHDRMForStarMask);
-      Parameters.set("SMThreshold", this.SMThreshold);
-      Parameters.set("SMScale", this.SMScale);
-      Parameters.set("SMLargeScale", this.SMLargeScale);
-      Parameters.set("SMSmallScale", this.SMSmallScale);
-      Parameters.set("SMCompensation", this.SMCompensation);
-      Parameters.set("SMSmoothness", this.SMSmoothness);
+      Parameters.set("starMaskThreshold", this.StarMaskThreshold);
+      Parameters.set("starMaskScale", this.StarMaskScale);
+      Parameters.set("starMaskLargeScale", this.StarMaskLargeScale);
+      Parameters.set("starMaskSmallScale", this.StarMaskSmallScale);
+      Parameters.set("starMaskCompensation", this.StarMaskCompensation);
+      Parameters.set("starMaskSmoothness", this.StarMaskSmoothness);
 
-      Parameters.set("useRSForBase", this.useRSForBase);
-      Parameters.set("RSForBaseLowerLimit", this.RSForBaseLowerLimit);
-      Parameters.set("RSForBaseUpperLimit", this.RSForBaseUpperLimit);
-      Parameters.set("RSForBaseFuzziness", this.RSForBaseFuzziness);
-      Parameters.set("RSForBaseSmoothness", this.RSForBaseSmoothness);
+      Parameters.set("useRangeSelectionForBase", this.UseRangeSelectionForBase);
+      Parameters.set("rangeSelectionForBaseLowerLimit", this.RangeSelectionForBaseLowerLimit);
+      Parameters.set("rangeSelectionForBaseUpperLimit", this.RangeSelectionForBaseUpperLimit);
+      Parameters.set("rangeSelectionForBaseFuzziness", this.RangeSelectionForBaseFuzziness);
+      Parameters.set("rangeSelectionForBaseSmoothness", this.RangeSelectionForBaseSmoothness);
 
       Parameters.set("useRangeSelectionsForLargeStars", this.useRangeSelectionsForLargeStars);
 
       for (var i = 0; i < this.totalRangeSelections; i++) {
-         Parameters.set("RSEnabled" + i, this.rangeSelectionsUsed[i]);
-         Parameters.set("RSLowerLimit" + i, this.rangeSelectionLowerLimits[i]);
-         Parameters.set("RSUpperLimit" + i, this.rangeSelectionUpperLimits[i]);
-         Parameters.set("RSFuzziness" + i, this.rangeSelectionFuzziness[i]);
-         Parameters.set("RSSmoothness" + i, this.rangeSelectionSmoothness[i]);
+         Parameters.set("rangeSelectionEnabled" + i, this.rangeSelectionsUsed[i]);
+         Parameters.set("rangeSelectionLowerLimit" + i, this.rangeSelectionLowerLimits[i]);
+         Parameters.set("rangeSelectionUpperLimit" + i, this.rangeSelectionUpperLimits[i]);
+         Parameters.set("rangeSelectionFuzziness" + i, this.rangeSelectionFuzziness[i]);
+         Parameters.set("rangeSelectionSmoothness" + i, this.rangeSelectionSmoothness[i]);
       }
 
    };

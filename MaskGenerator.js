@@ -39,18 +39,18 @@ function MaskGenerator(model, view) {
       var P = new RangeSelection;
       with (P)
       {
-         lowRange = model.RSForBaseLowerLimit;
-         highRange = model.RSForBaseUpperLimit;
-         fuzziness = model.RSForBaseFuzziness;
-         smoothness = model.RSForBaseSmoothness;
+         lowRange = model.RangeSelectionForBaseLowerLimit;
+         highRange = model.RangeSelectionForBaseUpperLimit;
+         fuzziness = model.RangeSelectionForBaseFuzziness;
+         smoothness = model.RangeSelectionForBaseSmoothness;
          screening = false;
          toLightness = true;
          invert = false;
       }
       P.executeOn(model.imageView,false);
-      model.rangeMaskPreview = ImageWindow.activeWindow;
-      model.rangeMaskPreview.mainView.id = this.getNewName("DSOMRangeMaskePreviev","");
-      model.rangeMaskPreview.zoomToOptimalFit();
+      model.maskPreview = ImageWindow.activeWindow;
+      model.maskPreview.mainView.id = this.getNewName("DSOMRangeMaskePreviev","");
+      model.maskPreview.zoomToOptimalFit();
    }
 
    this.previewStarMask = function() {
@@ -63,18 +63,18 @@ function MaskGenerator(model, view) {
       {
          this.createStarMask();
       }
-      model.rangeMaskPreview  = new ImageWindow(this.starMaskView.mainView.image.width,
+      model.maskPreview  = new ImageWindow(this.starMaskView.mainView.image.width,
                                    this.starMaskView.mainView.image.height,
                                    this.starMaskView.mainView.image.numberOfChannels,
                                    this.starMaskView.mainView.window.bitsPerSample,
                                    this.starMaskView.mainView.window.isFloatSample,
                                    this.starMaskView.mainView.image.colorSpace != ColorSpace_Gray,
                                    this.getNewName("DSOMSStarMaskPreview",""));
-      model.rangeMaskPreview.mainView.beginProcess(UndoFlag_NoSwapFile);
-      model.rangeMaskPreview.mainView.image.apply( this.starMaskView.mainView.image );
-      model.rangeMaskPreview.mainView.endProcess();
-      model.rangeMaskPreview.zoomToOptimalFit();
-      model.rangeMaskPreview.show();
+      model.maskPreview.mainView.beginProcess(UndoFlag_NoSwapFile);
+      model.maskPreview.mainView.image.apply( this.starMaskView.mainView.image );
+      model.maskPreview.mainView.endProcess();
+      model.maskPreview.zoomToOptimalFit();
+      model.maskPreview.show();
       this.starMaskView.forceClose();
       this.sourceView.forceClose();
    }
@@ -93,23 +93,23 @@ function MaskGenerator(model, view) {
                toLightness = true;
                invert = false;
             }
-            if ( model.rangeMaskPreview == null ) {
+            if ( model.maskPreview == null ) {
                P.executeOn(model.imageView,false);
             }
             else
             {
-               P.executeOn(model.rangeMaskPreview.mainView,false);
+               P.executeOn(model.maskPreview.mainView,false);
                if ( ! model.keepMasksOpen ) {
-                  model.rangeMaskPreview.forceClose();
+                  model.maskPreview.forceClose();
                }
             }
-            model.rangeMaskPreview = ImageWindow.activeWindow;
-            model.rangeMaskPreview.mainView.id = this.getNewName("DSOMRangeMaskPreviev",i.toString());
-            model.rangeMaskPreview.zoomToOptimalFit();
-            model.rangeMaskPreview.hide();
+            model.maskPreview = ImageWindow.activeWindow;
+            model.maskPreview.mainView.id = this.getNewName("DSOMRangeMaskPreviev",i.toString());
+            model.maskPreview.zoomToOptimalFit();
+            model.maskPreview.hide();
          }
       }
-      model.rangeMaskPreview.show();
+      model.maskPreview.show();
 
    }
 
@@ -896,13 +896,13 @@ function MaskGenerator(model, view) {
          highlightsClipping = 1.00000;
          waveletLayers = 5;
          structureContours = false;
-         noiseThreshold = model.SMThreshold;
+         noiseThreshold = model.StarMaskThreshold;
          aggregateStructures = false;
          binarizeStructures = false;
-         largeScaleGrowth = model.SMLargeScale;
-         smallScaleGrowth = model.SMSmallScale;
-         growthCompensation = model.SMCompensation;
-         smoothness = model.SMSmoothness;
+         largeScaleGrowth = model.StarMaskLargeScale;
+         smallScaleGrowth = model.StarMaskSmallScale;
+         growthCompensation = model.StarMaskCompensation;
+         smoothness = model.StarMaskSmoothness;
          invert = false;
          truncation = 1.00000;
          limit = 1.00000;
@@ -993,10 +993,10 @@ function MaskGenerator(model, view) {
       var P = new RangeSelection;
       with (P)
       {
-         lowRange = model.RSForBaseLowerLimit;
-         highRange = model.RSForBaseUpperLimit;
-         fuzziness = model.RSForBaseFuzziness;
-         smoothness = model.RSForBaseSmoothness;
+         lowRange = model.RangeSelectionForBaseLowerLimit;
+         highRange = model.RangeSelectionForBaseUpperLimit;
+         fuzziness = model.RangeSelectionForBaseFuzziness;
+         smoothness = model.RangeSelectionForBaseSmoothness;
          screening = false;
          toLightness = true;
          invert = false;
@@ -1283,7 +1283,7 @@ function MaskGenerator(model, view) {
          }
       }
 
-      if ( model.useRSForBase ) {
+      if ( model.UseRangeSelectionForBase ) {
          this.createRangeMask();
       }
       else {
