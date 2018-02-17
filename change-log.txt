@@ -1,0 +1,17 @@
+===============================================================================
+DSOMask Script Changelog
+===============================================================================
+
+-------------------------------------------
+           - v1.1:
+
+- Added preview buttons to preview star and range masks prior to mask creation.
+
+- Fix bug with star mask Scale spin box where range would only allow 0 to 2.
+  Now supports 2 to 12 like StarMask process and the default setting is 5.
+
+-------------------------------------------------------------------------------
+           - v1.0:
+
+- Initial release.
+-------------------------------------------------------------------------------
