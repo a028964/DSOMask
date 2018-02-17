@@ -22,7 +22,7 @@ function MaskGenerator(model, view) {
                                    model.imageView.window.bitsPerSample,
                                    model.imageView.window.isFloatSample,
                                    model.imageView.image.colorSpace != ColorSpace_Gray,
-                                   this.getNewName("DSOMSourceView",""));
+                                   this.getNewName("DSOM_SourceView",""));
       this.sourceView.mainView.beginProcess(UndoFlag_NoSwapFile);
       this.sourceView.mainView.image.apply( model.imageView.image );
       this.sourceView.mainView.endProcess();
@@ -49,7 +49,7 @@ function MaskGenerator(model, view) {
       }
       P.executeOn(model.imageView,false);
       model.maskPreview = ImageWindow.activeWindow;
-      model.maskPreview.mainView.id = this.getNewName("DSOMRangeMaskePreviev","");
+      model.maskPreview.mainView.id = this.getNewName("DSOM_DSO_Previev","");
       model.maskPreview.zoomToOptimalFit();
    }
 
@@ -69,7 +69,7 @@ function MaskGenerator(model, view) {
                                    this.starMaskView.mainView.window.bitsPerSample,
                                    this.starMaskView.mainView.window.isFloatSample,
                                    this.starMaskView.mainView.image.colorSpace != ColorSpace_Gray,
-                                   this.getNewName("DSOMSStarMaskPreview",""));
+                                   this.getNewName("DSOM_STARS_Preview",""));
       model.maskPreview.mainView.beginProcess(UndoFlag_NoSwapFile);
       model.maskPreview.mainView.image.apply( this.starMaskView.mainView.image );
       model.maskPreview.mainView.endProcess();
@@ -79,7 +79,7 @@ function MaskGenerator(model, view) {
       this.sourceView.forceClose();
    }
 
-   this.previewStarRangeMask = function() {
+   this.previewLargeStarRangeMask = function() {
       for (var i = 0; i < model.totalRangeSelections; i++ ) {
          if ( model.rangeSelectionsUsed[i] ) {
             var P = new RangeSelection;
@@ -104,7 +104,7 @@ function MaskGenerator(model, view) {
                }
             }
             model.maskPreview = ImageWindow.activeWindow;
-            model.maskPreview.mainView.id = this.getNewName("DSOMRangeMaskPreviev",i.toString());
+            model.maskPreview.mainView.id = this.getNewName("DSOM_LSTARS_Previev",i.toString());
             model.maskPreview.zoomToOptimalFit();
             model.maskPreview.hide();
          }
@@ -120,7 +120,7 @@ function MaskGenerator(model, view) {
                                     this.sourceView.mainView.window.bitsPerSample,
                                     this.sourceView.mainView.window.isFloatSample,
                                     this.sourceView.mainView.image.colorSpace != ColorSpace_Gray,
-                                    this.getNewName("DSOMStarMask","") );
+                                    this.getNewName("DSOM_STARS","") );
       this.starMaskView.mainView.beginProcess(UndoFlag_NoSwapFile);
       this.starMaskView.mainView.image.assign( this.sourceView.mainView.image );
       this.starMaskView.mainView.endProcess();
@@ -131,7 +131,7 @@ function MaskGenerator(model, view) {
                                        this.sourceView.mainView.window.bitsPerSample,
                                        this.sourceView.mainView.window.isFloatSample,
                                        this.sourceView.mainView.image.colorSpace != ColorSpace_Gray,
-                                       this.getNewName("DSOAuxMaskView","") );
+                                       this.getNewName("DSOM_AuxMaskView","") );
       this.auxMaskView.mainView.beginProcess(UndoFlag_NoSwapFile);
       this.auxMaskView.mainView.image.assign( this.sourceView.mainView.image );
       this.auxMaskView.mainView.endProcess();
@@ -840,7 +840,7 @@ function MaskGenerator(model, view) {
                                  this.sourceView.mainView.window.bitsPerSample,
                                  this.sourceView.mainView.window.isFloatSample,
                                  this.sourceView.mainView.image.colorSpace != ColorSpace_Gray,
-                                 this.getNewName("DSOMAuxView","") );
+                                 this.getNewName("DSOM_AuxView","") );
       this.auxView.mainView.beginProcess(UndoFlag_NoSwapFile);
       this.auxView.mainView.image.assign( this.sourceView.mainView.image );
       this.auxView.mainView.endProcess();
@@ -911,7 +911,7 @@ function MaskGenerator(model, view) {
       starMask.executeOn(this.auxView.mainView,false);
 
       this.starMaskView = ImageWindow.activeWindow;
-      this.starMaskView.mainView.id = this.getNewName("DSOStarMask","");
+      this.starMaskView.mainView.id = this.getNewName("DSOM_STAR","");
       this.starMaskView.zoomToOptimalFit();
       this.starMaskView.sendToBack();
       this.starMaskView.hide();
@@ -947,7 +947,7 @@ function MaskGenerator(model, view) {
                }
             }
             rangeView = ImageWindow.activeWindow;
-            rangeView.mainView.id = this.getNewName("DSOMRangeSelection",i.toString());
+            rangeView.mainView.id = this.getNewName("DSOM_LSTARS",i.toString());
             rangeView.zoomToOptimalFit();
             rangeView.hide();
          }
@@ -1004,7 +1004,7 @@ function MaskGenerator(model, view) {
       P.executeOn(this.sourceView.mainView,false);
       this.dsoMaskView = ImageWindow.activeWindow;
       this.dsoMaskView.hide();
-      this.dsoMaskView.mainView.id = this.getNewName("DSOMDSOView","");
+      this.dsoMaskView.mainView.id = this.getNewName("DSOM_DSO","");
       this.dsoMaskView.zoomToOptimalFit();
    }
 
@@ -1015,7 +1015,7 @@ function MaskGenerator(model, view) {
                                  this.sourceView.mainView.window.bitsPerSample,
                                  this.sourceView.mainView.window.isFloatSample,
                                  this.sourceView.mainView.image.colorSpace != ColorSpace_Gray,
-                                 this.getNewName("DSOMDSOView","") );
+                                 this.getNewName("DSOM_DSO","") );
       this.dsoMaskView.mainView.beginProcess(UndoFlag_NoSwapFile);
       this.dsoMaskView.mainView.image.assign( this.sourceView.mainView.image );
       this.dsoMaskView.mainView.endProcess();
@@ -1026,7 +1026,7 @@ function MaskGenerator(model, view) {
                                  this.sourceView.mainView.window.bitsPerSample,
                                  this.sourceView.mainView.window.isFloatSample,
                                  this.sourceView.mainView.image.colorSpace != ColorSpace_Gray,
-                                 this.getNewName("DSOMn","") );
+                                 this.getNewName("DSOM_n","") );
       n.mainView.beginProcess(UndoFlag_NoSwapFile);
       n.mainView.image.assign( this.sourceView.mainView.image );
       n.mainView.endProcess();
@@ -1283,7 +1283,7 @@ function MaskGenerator(model, view) {
          }
       }
 
-      if ( model.UseRangeSelectionForBase ) {
+      if ( model.useRangeSelectionForBase ) {
          this.createRangeMask();
       }
       else {

@@ -1,4 +1,4 @@
-
+closeLargeStarMaskPreviewButton
 function MainController(model, isViewTarget) {
    this.view = null;
 
@@ -126,34 +126,34 @@ function MainController(model, isViewTarget) {
       this.view.useHDRMCheckBox.checked = model.useHDRMForStarMask;
 
       model.StarMaskThreshold = model.defStarMaskThreshold;
-      this.view.StarMaskThresholdNumericControl.setValue(model.StarMaskThreshold);
+      this.view.starMaskThresholdNumericControl.setValue(model.StarMaskThreshold);
 
       model.StarMaskScale = model.defStarMaskScale;
-      this.view.StarMaskScaleSpinBox.value = model.StarMaskScale;
+      this.view.starMaskScaleSpinBox.value = model.StarMaskScale;
 
       model.StarMaskLargeScale = model.defStarMaskLargeScale;
-      this.view.StarMaskLargeScaleSpinBox.value = model.StarMaskLargeScale;
+      this.view.starMaskLargeScaleSpinBox.value = model.StarMaskLargeScale;
 
       model.StarMaskSmallScale = model.defStarMaskSmallScale;
-      this.view.StarMaskSmallScaleSpinBox.value = model.StarMaskSmallScale;
+      this.view.starMaskSmallScaleSpinBox.value = model.StarMaskSmallScale;
 
       model.StarMaskCompensation = model.defStarMaskCompensation;
-      this.view.StarMaskCompensationSpinBox.value = model.StarMaskCompensation;
+      this.view.starMaskCompensationSpinBox.value = model.StarMaskCompensation;
 
       model.StarMaskSmoothness = model.defStarMaskSmoothness;
-      this.view.StarMaskSmoothnessSpinBox.value = model.StarMaskSmoothness;
+      this.view.starMaskSmoothnessSpinBox.value = model.StarMaskSmoothness;
 
       model.RangeSelectionForBaseLowerLimit = model.defRangeSelectionForBaseLowerLimit;
-      this.view.RangeSelectionForBaseLowerLimitNumericControl.setValue(model.RangeSelectionForBaseLowerLimit);
+      this.view.rangeSelectionForBaseLowerLimitNumericControl.setValue(model.RangeSelectionForBaseLowerLimit);
 
       model.RangeSelectionForBaseUpperLimit = model.defRangeSelectionForBaseUpperLimit;
-      this.view.RangeSelectionForBaseUpperLimitNumericControl.setValue(model.RangeSelectionForBaseUpperLimit);
+      this.view.rangeSelectionForBaseUpperLimitNumericControl.setValue(model.RangeSelectionForBaseUpperLimit);
 
       model.RangeSelectionForBaseFuzziness = model.defRangeSelectionForBaseFuzziness;
-      this.view.RangeSelectionForBaseFuzzinessNumericControl.setValue(model.RangeSelectionForBaseFuzziness);
+      this.view.rangeSelectionForBaseFuzzinessNumericControl.setValue(model.RangeSelectionForBaseFuzziness);
 
       model.RangeSelectionForBaseSmoothness = model.defRangeSelectionForBaseSmoothness;
-      this.view.RangeSelectionForBaseSmoothnessNumericControl.setValue(model.RangeSelectionForBaseSmoothness);
+      this.view.rangeSelectionForBaseSmoothnessNumericControl.setValue(model.RangeSelectionForBaseSmoothness);
 
       model.useRangeSelectionsForLargeStars = model.defUseRangeSelectionsForLargeStars;
       this.view.useRangeSelectionsForLargeStarsCheckBox.checked = model.useRangeSelectionsForLargeStars;
@@ -198,32 +198,32 @@ function MainController(model, isViewTarget) {
       this.view.useHDRMCheckBox.enabled = false;
       this.view.previewStarMaskButton.enabled = false;
       this.view.closeStarMaskPreviewButton.enabled = false;
-      this.view.StarMaskThresholdNumericControl.enabled = false;
-      this.view.StarMaskScaleSpinBox.enabled = false;
-      this.view.StarMaskLargeScaleSpinBox.enabled = false;
-      this.view.StarMaskSmallScaleSpinBox.enabled = false;
-      this.view.StarMaskCompensationSpinBox.enabled = false;
-      this.view.StarMaskSmoothnessSpinBox.enabled = false;
+      this.view.starMaskThresholdNumericControl.enabled = false;
+      this.view.starMaskScaleSpinBox.enabled = false;
+      this.view.starMaskLargeScaleSpinBox.enabled = false;
+      this.view.starMaskSmallScaleSpinBox.enabled = false;
+      this.view.starMaskCompensationSpinBox.enabled = false;
+      this.view.starMaskSmoothnessSpinBox.enabled = false;
 
       this.view.newInstanceButton.enabled = false;
       this.view.browseDocumentationButton.enabled = false;
       this.view.resetButton.enabled = false;
 
-      this.view.UseRangeSelectionForBaseCheckBox.enabled = false;
+      this.view.useRangeSelectionForBaseCheckBox.enabled = false;
       this.view.previewBaseRangeMaskButton.enabled = false;
-      this.view.closePreviewButton.enabled = false;
-      this.view.RangeSelectionForBaseLowerLimitNumericControl.enabled = false;
-      this.view.RangeSelectionForBaseUpperLimitNumericControl.enabled = false;
-      this.view.RangeSelectionForBaseFuzzinessNumericControl.enabled = false;
-      this.view.RangeSelectionForBaseSmoothnessNumericControl.enabled = false;
+      this.view.closeBaseRangeMaskPreviewButton.enabled = false;
+      this.view.rangeSelectionForBaseLowerLimitNumericControl.enabled = false;
+      this.view.rangeSelectionForBaseUpperLimitNumericControl.enabled = false;
+      this.view.rangeSelectionForBaseFuzzinessNumericControl.enabled = false;
+      this.view.rangeSelectionForBaseSmoothnessNumericControl.enabled = false;
 
       this.view.useRangeSelectionsForLargeStarsCheckBox.enabled = false;
-      this.view.RangeSelectionLowerLimitNumericControl.enabled = false;
-      this.view.RangeSelectionUpperLimitNumericControl.enabled = false;
-      this.view.RangeSelectionFuzzinessNumericControl.enabled = false;
-      this.view.RangeSelectionSmoothnessNumericControl.enabled = false;
-      this.view.previewStarButton.enabled = false;
-      this.view.closePreviewStarButton.enabled = false;
+      this.view.rangeSelectionLowerLimitNumericControl.enabled = false;
+      this.view.rangeSelectionUpperLimitNumericControl.enabled = false;
+      this.view.rangeSelectionFuzzinessNumericControl.enabled = false;
+      this.view.rangeSelectionSmoothnessNumericControl.enabled = false;
+      this.view.previewLargeStarMaskButton.enabled = false;
+      this.view.closeLargeStarMaskPreviewButton.enabled = false;
 
       this.view.rangeSelectionsTreeBox.child(0).enabled = false;
       this.view.rangeSelectionsTreeBox.child(1).enabled = false;
@@ -265,29 +265,29 @@ function MainController(model, isViewTarget) {
 
       if ( (!model.protectStars) || model.useClassicStarMask )
       {
-         this.view.StarMaskThresholdNumericControl.enabled = false;
-         this.view.StarMaskScaleSpinBox.enabled = false;
-         this.view.StarMaskLargeScaleSpinBox.enabled = false;
-         this.view.StarMaskSmallScaleSpinBox.enabled = false;
-         this.view.StarMaskCompensationSpinBox.enabled = false;
-         this.view.StarMaskSmoothnessSpinBox.enabled = false;
+         this.view.starMaskThresholdNumericControl.enabled = false;
+         this.view.starMaskScaleSpinBox.enabled = false;
+         this.view.starMaskLargeScaleSpinBox.enabled = false;
+         this.view.starMaskSmallScaleSpinBox.enabled = false;
+         this.view.starMaskCompensationSpinBox.enabled = false;
+         this.view.starMaskSmoothnessSpinBox.enabled = false;
       }
       else
       {
-         this.view.StarMaskThresholdNumericControl.enabled = true;
-         this.view.StarMaskScaleSpinBox.enabled = true;
-         this.view.StarMaskLargeScaleSpinBox.enabled = true;
-         this.view.StarMaskSmallScaleSpinBox.enabled = true;
-         this.view.StarMaskCompensationSpinBox.enabled = true;
-         this.view.StarMaskSmoothnessSpinBox.enabled = true;
+         this.view.starMaskThresholdNumericControl.enabled = true;
+         this.view.starMaskScaleSpinBox.enabled = true;
+         this.view.starMaskLargeScaleSpinBox.enabled = true;
+         this.view.starMaskSmallScaleSpinBox.enabled = true;
+         this.view.starMaskCompensationSpinBox.enabled = true;
+         this.view.starMaskSmoothnessSpinBox.enabled = true;
       }
 
-      this.view.UseRangeSelectionForBaseCheckBox.enabled = true;
-      if ( model.UseRangeSelectionForBase ) {
-         this.view.RangeSelectionForBaseLowerLimitNumericControl.enabled = true;
-         this.view.RangeSelectionForBaseUpperLimitNumericControl.enabled = true;
-         this.view.RangeSelectionForBaseFuzzinessNumericControl.enabled = true;
-         this.view.RangeSelectionForBaseSmoothnessNumericControl.enabled = true;
+      this.view.useRangeSelectionForBaseCheckBox.enabled = true;
+      if ( model.useRangeSelectionForBase ) {
+         this.view.rangeSelectionForBaseLowerLimitNumericControl.enabled = true;
+         this.view.rangeSelectionForBaseUpperLimitNumericControl.enabled = true;
+         this.view.rangeSelectionForBaseFuzzinessNumericControl.enabled = true;
+         this.view.rangeSelectionForBaseSmoothnessNumericControl.enabled = true;
          if ( model.imageView != null )
          {
             this.view.previewBaseRangeMaskButton.enabled = true;
@@ -295,16 +295,16 @@ function MainController(model, isViewTarget) {
          else {
             this.view.previewBaseRangeMaskButton.enabled = false;
          }
-         this.view.closePreviewButton.enabled = false;
+         this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
       }
       else
       {
-         this.view.RangeSelectionForBaseLowerLimitNumericControl.enabled = false;
-         this.view.RangeSelectionForBaseUpperLimitNumericControl.enabled = false;
-         this.view.RangeSelectionForBaseFuzzinessNumericControl.enabled = false;
-         this.view.RangeSelectionForBaseSmoothnessNumericControl.enabled = false;
+         this.view.rangeSelectionForBaseLowerLimitNumericControl.enabled = false;
+         this.view.rangeSelectionForBaseUpperLimitNumericControl.enabled = false;
+         this.view.rangeSelectionForBaseFuzzinessNumericControl.enabled = false;
+         this.view.rangeSelectionForBaseSmoothnessNumericControl.enabled = false;
          this.view.previewBaseRangeMaskButton.enabled = false;
-         this.view.closePreviewButton.enabled = false;
+         this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
       }
 
       if ( model.protectStars )
@@ -315,23 +315,23 @@ function MainController(model, isViewTarget) {
          {
             if ( model.imageView != null )
             {
-               this.view.previewStarButton.enabled = true;
+               this.view.previewLargeStarMaskButton.enabled = true;
             }
             else
             {
-               this.view.previewStarButton.enabled = false;
+               this.view.previewLargeStarMaskButton.enabled = false;
             }
-            this.view.closePreviewStarButton.enabled = false;
+            this.view.closeLargeStarMaskPreviewButton.enabled = false;
          }
          else
          {
-            this.view.previewStarButton.enabled = false;
-            this.view.closePreviewStarButton.enabled = false;
+            this.view.previewLargeStarMaskButton.enabled = false;
+            this.view.closeLargeStarMaskPreviewButton.enabled = false;
          }
-         this.view.RangeSelectionLowerLimitNumericControl.enabled = model.useRangeSelectionsForLargeStars;
-         this.view.RangeSelectionUpperLimitNumericControl.enabled = model.useRangeSelectionsForLargeStars;
-         this.view.RangeSelectionFuzzinessNumericControl.enabled = model.useRangeSelectionsForLargeStars;
-         this.view.RangeSelectionSmoothnessNumericControl.enabled = model.useRangeSelectionsForLargeStars;
+         this.view.rangeSelectionLowerLimitNumericControl.enabled = model.useRangeSelectionsForLargeStars;
+         this.view.rangeSelectionUpperLimitNumericControl.enabled = model.useRangeSelectionsForLargeStars;
+         this.view.rangeSelectionFuzzinessNumericControl.enabled = model.useRangeSelectionsForLargeStars;
+         this.view.rangeSelectionSmoothnessNumericControl.enabled = model.useRangeSelectionsForLargeStars;
 
          this.view.rangeSelectionsTreeBox.child(0).enabled = model.useRangeSelectionsForLargeStars;
          this.view.rangeSelectionsTreeBox.child(1).enabled = model.useRangeSelectionsForLargeStars;
@@ -341,13 +341,13 @@ function MainController(model, isViewTarget) {
       {
          this.view.useRangeSelectionsForLargeStarsCheckBox.enabled = false;
 
-         this.view.RangeSelectionLowerLimitNumericControl.enabled = false;
-         this.view.RangeSelectionUpperLimitNumericControl.enabled = false;
-         this.view.RangeSelectionFuzzinessNumericControl.enabled = false;
-         this.view.RangeSelectionSmoothnessNumericControl.enabled = false;
+         this.view.rangeSelectionLowerLimitNumericControl.enabled = false;
+         this.view.rangeSelectionUpperLimitNumericControl.enabled = false;
+         this.view.rangeSelectionFuzzinessNumericControl.enabled = false;
+         this.view.rangeSelectionSmoothnessNumericControl.enabled = false;
 
-         this.view.previewStarButton.enabled = false;
-         this.view.closePreviewStarButton.enabled = false;
+         this.view.previewLargeStarMaskButton.enabled = false;
+         this.view.closeLargeStarMaskPreviewButton.enabled = false;
 
          this.view.rangeSelectionsTreeBox.child(0).enabled = false;
          this.view.rangeSelectionsTreeBox.child(1).enabled = false;
@@ -406,50 +406,50 @@ function MainController(model, isViewTarget) {
       this.enableControls();
    };
 
-   this.UseRangeSelectionForBaseCheck = function(checked) {
-      model.UseRangeSelectionForBase = checked;
+   this.useRangeSelectionForBaseCheck = function(checked) {
+      model.useRangeSelectionForBase = checked;
       this.enableControls();
    };
 
-   this.RangeSelectionForBaseLowerLimitNumericControlUpdate = function(value) {
+   this.rangeSelectionForBaseLowerLimitNumericControlUpdate = function(value) {
       model.RangeSelectionForBaseLowerLimit = value;
    }
-   this.RangeSelectionForBaseUpperLimitNumericControlUpdate = function(value) {
+   this.rangeSelectionForBaseUpperLimitNumericControlUpdate = function(value) {
       model.RangeSelectionForBaseUpperLimit = value;
    }
-   this.RangeSelectionForBaseFuzzinessNumericControlUpdate = function(value) {
+   this.rangeSelectionForBaseFuzzinessNumericControlUpdate = function(value) {
       model.RangeSelectionForBaseFuzziness = value;
    }
-   this.RangeSelectionForBaseSmoothnessNumericControlUpdate = function(value) {
+   this.rangeSelectionForBaseSmoothnessNumericControlUpdate = function(value) {
       model.RangeSelectionForBaseSmoothness = value;
    }
 
-   this.StarMaskThresholdNumericControlUpdate = function(value) {
+   this.starMaskThresholdNumericControlUpdate = function(value) {
       model.StarMaskThreshold = value;
       this.enableControls();
    };
 
-   this.StarMaskScaleSpinBoxUpdate = function(value) {
+   this.starMaskScaleSpinBoxUpdate = function(value) {
       model.StarMaskScale = value;
       this.enableControls();
    };
 
-   this.StarMaskLargeScaleSpinBoxUpdate = function(value) {
+   this.starMaskLargeScaleSpinBoxUpdate = function(value) {
       model.StarMaskLargeScale = value;
       this.enableControls();
    };
 
-   this.StarMaskSmallScaleSpinBoxUpdate = function(value) {
+   this.starMaskSmallScaleSpinBoxUpdate = function(value) {
       model.StarMaskSmallScale = value;
       this.enableControls();
    }
 
-   this.StarMaskCompensationSpinBoxUpdate = function(value) {
+   this.starMaskCompensationSpinBoxUpdate = function(value) {
       model.StarMaskCompensation = value;
       this.enableControls();
    };
 
-   this.StarMaskSmoothnessSpinBoxUpdate = function(value) {
+   this.starMaskSmoothnessSpinBoxUpdate = function(value) {
       model.StarMaskSmoothness = value;
       this.enableControls();
    };
@@ -460,10 +460,10 @@ function MainController(model, isViewTarget) {
    }
 
    this.rangeSelectionsTreeBoxNodeClicked = function(node, col) {
-      this.view.RangeSelectionLowerLimitNumericControl.setValue(node.text(1).toFloat());
-      this.view.RangeSelectionUpperLimitNumericControl.setValue(node.text(2).toFloat());
-      this.view.RangeSelectionFuzzinessNumericControl.setValue(node.text(3).toFloat());
-      this.view.RangeSelectionSmoothnessNumericControl.setValue(node.text(4).toFloat());
+      this.view.rangeSelectionLowerLimitNumericControl.setValue(node.text(1).toFloat());
+      this.view.rangeSelectionUpperLimitNumericControl.setValue(node.text(2).toFloat());
+      this.view.rangeSelectionFuzzinessNumericControl.setValue(node.text(3).toFloat());
+      this.view.rangeSelectionSmoothnessNumericControl.setValue(node.text(4).toFloat());
       var index = node.text(0).toInt() - 1;
 
       if ( index == 0 ) {
@@ -499,22 +499,22 @@ function MainController(model, isViewTarget) {
 
    }
 
-   this.RangeSelectionLowerLimitNumericControlUpdate = function(value) {
+   this.rangeSelectionLowerLimitNumericControlUpdate = function(value) {
       this.view.rangeSelectionsTreeBox.currentNode.setText(1,value.toPrecision(5));
       var index = this.view.rangeSelectionsTreeBox.currentNode.text(0).toInt();
       model.rangeSelectionLowerLimits[index-1] = value;
    }
-   this.RangeSelectionUpperLimitNumericControlUpdate = function(value) {
+   this.rangeSelectionUpperLimitNumericControlUpdate = function(value) {
       this.view.rangeSelectionsTreeBox.currentNode.setText(2,value.toPrecision(5));
       var index = this.view.rangeSelectionsTreeBox.currentNode.text(0).toInt();
       model.rangeSelectionUpperLimits[index-1] = value;
    }
-   this.RangeSelectionFuzzinessNumericControlUpdate = function(value) {
+   this.rangeSelectionFuzzinessNumericControlUpdate = function(value) {
       this.view.rangeSelectionsTreeBox.currentNode.setText(3,value.toPrecision(5));
       var index = this.view.rangeSelectionsTreeBox.currentNode.text(0).toInt();
       model.rangeSelectionFuzziness[index-1] = value;
    }
-   this.RangeSelectionSmoothnessNumericControlUpdate = function(value) {
+   this.rangeSelectionSmoothnessNumericControlUpdate = function(value) {
       this.view.rangeSelectionsTreeBox.currentNode.setText(4, value.toPrecision(5));
       var index = this.view.rangeSelectionsTreeBox.currentNode.text(0).toInt();
       model.rangeSelectionSmoothness[index-1] = value;
@@ -579,7 +579,7 @@ function MainController(model, isViewTarget) {
 
       console.writeln(format(
          "Use range selections for base: " +
-         model.UseRangeSelectionForBase
+         model.useRangeSelectionForBase
       ));
 
       console.writeln("Use RS for base lower limit: " + model.RangeSelectionForBaseLowerLimit);
@@ -606,7 +606,7 @@ function MainController(model, isViewTarget) {
    this.previewBaseRangeMask = function() {
       this.disableControls();
       this.view.previewBaseRangeMaskButton.enabled = false;
-      this.view.closePreviewButton.enabled = true;
+      this.viewcloseBaseRangeMaskPreviewButton.enabled = true;
 
       console.show();
       console.flush();
@@ -662,10 +662,10 @@ function MainController(model, isViewTarget) {
    };
 
 
-   this.previewStarRangeMask = function() {
+   this.previewLargeStarRangeMask = function() {
       this.disableControls();
-      this.view.previewStarButton.enabled = false;
-      this.view.closePreviewStarButton.enabled = true;
+      this.view.previewLargeStarMaskButton.enabled = false;
+      this.view.closeLargeStarMaskPreviewButton.enabled = true;
 
       console.show();
       console.flush();
@@ -679,7 +679,7 @@ function MainController(model, isViewTarget) {
 
       var time = -(new Date()).getTime();
 
-      (new MaskGenerator(model, this.view)).previewStarRangeMask();
+      (new MaskGenerator(model, this.view)).previewLargeStarRangeMask();
 
       time += (new Date()).getTime();
       console.writeln(format("%.03f s", 0.001 * time));
@@ -691,9 +691,9 @@ function MainController(model, isViewTarget) {
 
    };
 
-   this.closeRangeMaskPreview = function() {
+   this.closePreview = function() {
       //this.view.previewBaseRangeMaskButton.enabled = true;
-      //this.view.closePreviewButton.enabled = false;
+      //this.viewcloseBaseRangeMaskPreviewButton.enabled = false;
       if ( model.maskPreview != null ) {
          model.maskPreview.forceClose();
          model.maskPreview = null;
@@ -980,18 +980,18 @@ function MainView(model, controller) {
       this.settingsSection = this.addGroupBox("Settings");
       {
          {
-            this.UseRangeSelectionForBasePane = this.addPane(this.settingsSection);
+            this.useRangeSelectionForBasePane = this.addPane(this.settingsSection);
 
-            this.UseRangeSelectionForBasePane.addUnscaledSpacing(this.labelWidth);
+            this.useRangeSelectionForBasePane.addUnscaledSpacing(this.labelWidth);
 
-            this.UseRangeSelectionForBasePane.addSpacing(
-               this.UseRangeSelectionForBasePane.spacing
+            this.useRangeSelectionForBasePane.addSpacing(
+               this.useRangeSelectionForBasePane.spacing
             );
 
-            this.UseRangeSelectionForBaseCheckBox = this.addCheckBox(
-               this.UseRangeSelectionForBasePane,
+            this.useRangeSelectionForBaseCheckBox = this.addCheckBox(
+               this.useRangeSelectionForBasePane,
                "Use range mask for base image",
-               model.UseRangeSelectionForBase,
+               model.useRangeSelectionForBase,
                "<p>If checked, a range mask created from RangeSelection will " +
                "be used for the base image of the mask.</p>" +
                "<p>If not checked, then the base image for the mask " +
@@ -1002,7 +1002,7 @@ function MainView(model, controller) {
                }
             );
 
-            this.UseRangeSelectionForBasePane.addStretch();
+            this.useRangeSelectionForBasePane.addStretch();
          }
 
          {
@@ -1083,27 +1083,27 @@ function MainView(model, controller) {
             this.previewBaseRangeMaskButton = this.addPushButton(
                this.previewBaseRangeMaskButtonPane,
                "Preview",
-               "<p>Preview range mask.</p>",
+               "<p>Preview base range mask.</p>",
                function() {
                   controller.previewBaseRangeMask();
                }
             );
 
-            this.closePreviewButton = this.addPushButton(
+            thiscloseBaseRangeMaskPreviewButton = this.addPushButton(
                this.previewBaseRangeMaskButtonPane,
                "Close Preview",
                "<p>Close the range mask preview.</p>",
                function() {
-                  controller.closeRangeMaskPreview();
+                  controller.closePreview();
                }
             );
          }
 
          {
-            this.RangeSelectionForBaseLowerLimitPane = this.addPane(this.rangeSelectionGroupBox);
+            this.rangeSelectionForBaseLowerLimitPane = this.addPane(this.rangeSelectionGroupBox);
 
-            this.RangeSelectionForBaseLowerLimitNumericControl = this.addNumericControl(
-                  this.RangeSelectionForBaseLowerLimitPane,
+            this.rangeSelectionForBaseLowerLimitNumericControl = this.addNumericControl(
+                  this.rangeSelectionForBaseLowerLimitPane,
                      "Lower limit:",
                      model.RangeSelectionForBaseLowerLimit,
                      0.0, 1.0,
@@ -1115,14 +1115,14 @@ function MainView(model, controller) {
                         controller.RangeSelectionForBaseLowerLimitNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionForBaseLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
+            this.rangeSelectionForBaseLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
          }
 
          {
-            this.RangeSelectionForBaseUpperLimitPane = this.addPane(this.rangeSelectionGroupBox);
+            this.rangeSelectionForBaseUpperLimitPane = this.addPane(this.rangeSelectionGroupBox);
 
-            this.RangeSelectionForBaseUpperLimitNumericControl = this.addNumericControl(
-                  this.RangeSelectionForBaseUpperLimitPane,
+            this.rangeSelectionForBaseUpperLimitNumericControl = this.addNumericControl(
+                  this.rangeSelectionForBaseUpperLimitPane,
                      "Upper limit:",
                      model.RangeSelectionForBaseUpperLimit,
                      0.0, 1.0,
@@ -1134,15 +1134,15 @@ function MainView(model, controller) {
                         controller.RangeSelectionForBaseUpperLimitNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionForBaseUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
+            this.rangeSelectionForBaseUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
 
          }
 
          {
-            this.RangeSelectionForBaseFuzzinessPane = this.addPane(this.rangeSelectionGroupBox);
+            this.rangeSelectionForBaseFuzzinessPane = this.addPane(this.rangeSelectionGroupBox);
 
-            this.RangeSelectionForBaseFuzzinessNumericControl = this.addNumericControl(
-                  this.RangeSelectionForBaseFuzzinessPane,
+            this.rangeSelectionForBaseFuzzinessNumericControl = this.addNumericControl(
+                  this.rangeSelectionForBaseFuzzinessPane,
                      "Fuzziness:",
                      model.RangeSelectionForBaseFuzziness,
                      0.0, 1.0,
@@ -1154,15 +1154,15 @@ function MainView(model, controller) {
                         controller.RangeSelectionForBaseFuzzinessNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionForBaseFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
+            this.rangeSelectionForBaseFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
 
          }
 
          {
-            this.RangeSelectionForBaseSmoothnessPane = this.addPane(this.rangeSelectionGroupBox);
+            this.rangeSelectionForBaseSmoothnessPane = this.addPane(this.rangeSelectionGroupBox);
 
-            this.RangeSelectionForBaseSmoothnessNumericControl = this.addNumericControl(
-                  this.RangeSelectionForBaseSmoothnessPane,
+            this.rangeSelectionForBaseSmoothnessNumericControl = this.addNumericControl(
+                  this.rangeSelectionForBaseSmoothnessPane,
                      "Smoothness:",
                      model.RangeSelectionForBaseSmoothness,
                      0.0, 100.0,
@@ -1174,7 +1174,7 @@ function MainView(model, controller) {
                         controller.RangeSelectionForBaseSmoothnessNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionForBaseSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
+            this.rangeSelectionForBaseSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
 
          }
       }
@@ -1201,7 +1201,7 @@ function MainView(model, controller) {
                "Close Preview",
                "<p>Close the star mask preview.</p>",
                function() {
-                  controller.closeRangeMaskPreview();
+                  controller.closePreview();
                }
             );
          }
@@ -1255,10 +1255,10 @@ function MainView(model, controller) {
          }
 
          {
-            this.StarMaskThresholdPane = this.addPane(this.starMaskGroupBox);
+            this.starMaskThresholdPane = this.addPane(this.starMaskGroupBox);
 
-            this.StarMaskThresholdNumericControl = this.addNumericControl(
-                  this.StarMaskThresholdPane,
+            this.starMaskThresholdNumericControl = this.addNumericControl(
+                  this.starMaskThresholdPane,
                      "Threshold:",
                      model.StarMaskThreshold,
                      0.0, 1.0,
@@ -1270,70 +1270,70 @@ function MainView(model, controller) {
                         controller.StarMaskThresholdNumericControlUpdate(value);
                         }
             );
-            this.StarMaskThresholdNumericControl.toolTip = "<p>Threshold to use with StarMask process.</p>";
+            this.starMaskThresholdNumericControl.toolTip = "<p>Threshold to use with StarMask process.</p>";
          }
 
          {
-            this.StarMaskScalePane = this.addPane(this.starMaskGroupBox);
-            this.StarMaskThresholdLabel = this.addLabel(
-                  this.StarMaskScalePane,
+            this.starMaskScalePane = this.addPane(this.starMaskGroupBox);
+            this.starMaskThresholdLabel = this.addLabel(
+                  this.starMaskScalePane,
                   "Scale:",
                   "<p>Scale to use with StarMask process.</p>"
             );
 
-            this.StarMaskScaleSpinBox = this.addSpinBox(
-                  this.StarMaskScalePane,
+            this.starMaskScaleSpinBox = this.addSpinBox(
+                  this.starMaskScalePane,
                      model.StarMaskScale,
                      2, 12.0,
                      function (value) {
                         controller.StarMaskScaleSpinBoxUpdate(value);
                         }
             );
-            this.StarMaskScaleSpinBox.toolTip = "<p>Scale to use with StarMask process.</p>",\
+            this.starMaskScaleSpinBox.toolTip = "<p>Scale to use with StarMask process.</p>",\
 
-            this.StarMaskScalePane.addStretch();
+            this.starMaskScalePane.addStretch();
 
          }
 
          {
             this.smPane1 = this.addPane(this.starMaskGroupBox);
             {
-               this.StarMaskLargeScalePane = this.addHorizontalSizer(this.smPane1);
-               this.StarMaskLargeScaleLabel = this.addLabel(
-                     this.StarMaskLargeScalePane,
+               this.starMaskLargeScalePane = this.addHorizontalSizer(this.smPane1);
+               this.starMaskLargeScaleLabel = this.addLabel(
+                     this.starMaskLargeScalePane,
                      "Large-scale:",
                      "<p>Large-scale to use with StarMask process.</p>"
                );
 
-               this.StarMaskLargeScaleSpinBox = this.addSpinBox(
-                     this.StarMaskLargeScalePane,
+               this.starMaskLargeScaleSpinBox = this.addSpinBox(
+                     this.starMaskLargeScalePane,
                         model.StarMaskLargeScale,
                         0, 15,
                         function (value) {
                            controller.StarMaskLargeScaleSpinBoxUpdate(value);
                            }
                );
-               this.StarMaskLargeScaleSpinBox.toolTip = "<p>Large-scale to use with StarMask process.</p>";
-//               this.StarMaskLargeScalePane.addStretch();
+               this.starMaskLargeScaleSpinBox.toolTip = "<p>Large-scale to use with StarMask process.</p>";
+//               this.starMaskLargeScalePane.addStretch();
             }
             {
-               this.StarMaskCompensationPane = this.addHorizontalSizer(this.smPane1);
-               this.StarMaskCompensationLabel = this.addLabel(
-                     this.StarMaskCompensationPane,
+               this.starMaskCompensationPane = this.addHorizontalSizer(this.smPane1);
+               this.starMaskCompensationLabel = this.addLabel(
+                     this.starMaskCompensationPane,
                      "Compensation:",
                      "<p>Compensation to use with StarMask process.</p>"
                );
 
-               this.StarMaskCompensationSpinBox = this.addSpinBox(
-                     this.StarMaskCompensationPane,
+               this.starMaskCompensationSpinBox = this.addSpinBox(
+                     this.starMaskCompensationPane,
                         model.StarMaskCompensation,
                         1, 4,
                         function (value) {
                            controller.StarMaskCompensationSpinBoxUpdate(value);
                            }
                );
-               this.StarMaskCompensationSpinBox.toolTip = "<p>Compensation to use with StarMask process.</p>";
-//               this.StarMaskCompensationPane.addStretch();
+               this.starMaskCompensationSpinBox.toolTip = "<p>Compensation to use with StarMask process.</p>";
+//               this.starMaskCompensationPane.addStretch();
             }
             this.smPane1.addStretch();
          }
@@ -1341,44 +1341,44 @@ function MainView(model, controller) {
          {
             this.smPane2 = this.addPane(this.starMaskGroupBox);
             {
-               this.StarMaskSmallScalePane = this.addHorizontalSizer(this.smPane2);
-               this.StarMaskSmallScaleLabel = this.addLabel(
-                     this.StarMaskSmallScalePane,
+               this.starMaskSmallScalePane = this.addHorizontalSizer(this.smPane2);
+               this.starMaskSmallScaleLabel = this.addLabel(
+                     this.starMaskSmallScalePane,
                      "Small-scale:",
                      "<p>Small-scale to use with StarMask process.</p>"
                );
 
-               this.StarMaskSmallScaleSpinBox = this.addSpinBox(
-                     this.StarMaskSmallScalePane,
+               this.starMaskSmallScaleSpinBox = this.addSpinBox(
+                     this.starMaskSmallScalePane,
                         model.StarMaskSmallScale,
                         0, 15,
                         function (value) {
                            controller.StarMaskSmallScaleSpinBoxUpdate(value);
                            }
                );
-               this.StarMaskSmallScaleSpinBox.toolTip = "<p>Small-scale to use with StarMask process.</p>";
-//               this.StarMaskSmallScalePane.addStretch();
+               this.starMaskSmallScaleSpinBox.toolTip = "<p>Small-scale to use with StarMask process.</p>";
+//               this.starMaskSmallScalePane.addStretch();
 
             }
 
             {
-               this.StarMaskSmoothnessPane = this.addHorizontalSizer(this.smPane2);
-               this.StarMaskSmoothnessLabel = this.addLabel(
-                     this.StarMaskSmoothnessPane,
+               this.starMaskSmoothnessPane = this.addHorizontalSizer(this.smPane2);
+               this.starMaskSmoothnessLabel = this.addLabel(
+                     this.starMaskSmoothnessPane,
                      "Smoothness:",
                      "<p>Smoothness to user with StarMask process.</p>"
                );
 
-               this.StarMaskSmoothnessSpinBox = this.addSpinBox(
-                     this.StarMaskSmoothnessPane,
+               this.starMaskSmoothnessSpinBox = this.addSpinBox(
+                     this.starMaskSmoothnessPane,
                         model.StarMaskSmoothness,
                         0, 40,
                         function (value) {
                            controller.StarMaskSmoothnessSpinBoxUpdate(value);
                            }
                );
-               this.StarMaskSmoothnessSpinBox.toolTip = "<p>Smoothness to user with StarMask process.</p>";
-//               this.StarMaskSmoothnessPane.addStretch();
+               this.starMaskSmoothnessSpinBox.toolTip = "<p>Smoothness to user with StarMask process.</p>";
+//               this.starMaskSmoothnessPane.addStretch();
             }
             this.smPane2.addStretch();
          }
@@ -1413,23 +1413,23 @@ function MainView(model, controller) {
          }
 
          {
-            this.previewStarButtonPane = this.addPane(this.largeStarsGroupBox);
+            this.previewLargeStarMaskButtonPane = this.addPane(this.largeStarsGroupBox);
 
-            this.previewStarButton = this.addPushButton(
-               this.previewStarButtonPane,
+            this.previewLargeStarMaskButton = this.addPushButton(
+               this.previewLargeStarMaskButtonPane,
                "Preview",
                "<p>Preview range mask.</p>",
                function() {
-                  controller.previewStarRangeMask();
+                  controller.previewLargeStarRangeMask();
                }
             );
 
-            this.closePreviewStarButton = this.addPushButton(
-               this.previewStarButtonPane,
+            this.closeLargeStarMaskPreviewButton = this.addPushButton(
+               this.previewLargeStarMaskButtonPane,
                "Close Preview",
                "<p>Close the range mask preview.</p>",
                function() {
-                  controller.closeRangeMaskPreview();
+                  controller.closePreview();
                }
             );
          }
@@ -1472,10 +1472,10 @@ function MainView(model, controller) {
          this.rangeSelectionsPane.addStretch();
 
          {
-            this.RangeSelectionLowerLimitPane = this.addPane(this.largeStarsGroupBox);
+            this.rangeSelectionLowerLimitPane = this.addPane(this.largeStarsGroupBox);
 
-            this.RangeSelectionLowerLimitNumericControl = this.addNumericControl(
-                  this.RangeSelectionLowerLimitPane,
+            this.rangeSelectionLowerLimitNumericControl = this.addNumericControl(
+                  this.rangeSelectionLowerLimitPane,
                      "Lower limit:",
                      0.0,
                      0.0, 1.0,
@@ -1487,14 +1487,14 @@ function MainView(model, controller) {
                         controller.RangeSelectionLowerLimitNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
+            this.rangeSelectionLowerLimitNumericControl.toolTip = "<p>Range selection lower limit.</p>";
          }
 
          {
-            this.RangeSelectionUpperLimitPane = this.addPane(this.largeStarsGroupBox);
+            this.rangeSelectionUpperLimitPane = this.addPane(this.largeStarsGroupBox);
 
-            this.RangeSelectionUpperLimitNumericControl = this.addNumericControl(
-                  this.RangeSelectionUpperLimitPane,
+            this.rangeSelectionUpperLimitNumericControl = this.addNumericControl(
+                  this.rangeSelectionUpperLimitPane,
                      "Upper limit:",
                      1.0,
                      0.0, 1.0,
@@ -1506,15 +1506,15 @@ function MainView(model, controller) {
                         controller.RangeSelectionUpperLimitNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
+            this.rangeSelectionUpperLimitNumericControl.toolTip = "<p>Range selection upper limit.</p>";
 
          }
 
          {
-            this.RangeSelectionFuzzinessPane = this.addPane(this.largeStarsGroupBox);
+            this.rangeSelectionFuzzinessPane = this.addPane(this.largeStarsGroupBox);
 
-            this.RangeSelectionFuzzinessNumericControl = this.addNumericControl(
-                  this.RangeSelectionFuzzinessPane,
+            this.rangeSelectionFuzzinessNumericControl = this.addNumericControl(
+                  this.rangeSelectionFuzzinessPane,
                      "Fuzziness:",
                      0.0,
                      0.0, 1.0,
@@ -1526,15 +1526,15 @@ function MainView(model, controller) {
                         controller.RangeSelectionFuzzinessNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
+            this.rangeSelectionFuzzinessNumericControl.toolTip = "<p>Range selection fuzziness.</p>";
 
          }
 
          {
-            this.RangeSelectionSmoothnessPane = this.addPane(this.largeStarsGroupBox);
+            this.rangeSelectionSmoothnessPane = this.addPane(this.largeStarsGroupBox);
 
-            this.RangeSelectionSmoothnessNumericControl = this.addNumericControl(
-                  this.RangeSelectionSmoothnessPane,
+            this.rangeSelectionSmoothnessNumericControl = this.addNumericControl(
+                  this.rangeSelectionSmoothnessPane,
                      "Smoothness:",
                      0.0,
                      0.0, 100.0,
@@ -1546,7 +1546,7 @@ function MainView(model, controller) {
                         controller.RangeSelectionSmoothnessNumericControlUpdate(value);
                         }
             );
-            this.RangeSelectionSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
+            this.rangeSelectionSmoothnessNumericControl.toolTip = "<p>Range selection smoothness.</p>";
 
          }
       }
