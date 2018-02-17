@@ -56,7 +56,8 @@ function MainController(model, isViewTarget) {
       "<p>Other wise it's <b>(DSO-(STARS+LSTARS))</b></p>" +
 
       "<p>In both cases <b>STARS</b> and <b>LSTARS</b> are optional, with the " +
-      "exception that <b>LSTARS</b> is only possible if <b>STARS</b> is used.</p>");
+      "exception being that <b>LSTARS</b> is only possible if <b>STARS</b> is " +
+      "present.</p>");
 
    this.setView = function(view) {
       this.view = view;
