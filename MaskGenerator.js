@@ -1292,6 +1292,9 @@ function MaskGenerator(model, view) {
 
       this.assembleMask();
 
+      this.newMaskView.zoomFactor=12;
+      this.newMaskView.fitWindow();
+      this.newMaskView.zoomToOptimalFit();
       this.newMaskView.show();
 
       this.sourceView.forceClose();
