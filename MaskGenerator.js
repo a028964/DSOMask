@@ -29,7 +29,7 @@ function MaskGenerator(model, view) {
       this.sourceView.zoomFactor=12;
       this.sourceView.fitWindow();
       this.sourceView.zoomToOptimalFit();
-      
+
       if(this.sourceView.mainView.image.colorSpace != ColorSpace_Gray) {
          var toGray = new ConvertToGrayscale;
          this.sourceView.mainView.beginProcess(UndoFlag_NoSwapFile);
@@ -861,7 +861,7 @@ function MaskGenerator(model, view) {
       this.auxView.mainView.endProcess();
       this.auxView.zoomFactor=12;
       this.auxView.fitWindow();
-      this.auxView.mainView.zoomToOptimalFit();
+      this.auxView.zoomToOptimalFit();
 
       if (model.useHDRMForStarMask)
       {
@@ -930,6 +930,7 @@ function MaskGenerator(model, view) {
 
       this.starMaskView = ImageWindow.activeWindow;
       this.starMaskView.mainView.id = this.getNewName("DSOM_STAR","");
+      this.starMaskView.hide();
       this.starMaskView.zoomFactor=12;
       this.starMaskView.fitWindow();
       this.starMaskView.zoomToOptimalFit();
@@ -967,6 +968,7 @@ function MaskGenerator(model, view) {
             }
             rangeView = ImageWindow.activeWindow;
             rangeView.mainView.id = this.getNewName("DSOM_LSTARS",i.toString());
+            rangeView.hide();
             rangeView.zoomFactor=12;
             rangeView.fitWindow();
             rangeView.zoomToOptimalFit();
