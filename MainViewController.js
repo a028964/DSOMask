@@ -71,7 +71,7 @@ function MainController(model, isViewTarget) {
          StdButton_Ok
          )).execute();
    }
-
+/*
    this.setImageView = function(view) {
       if (view != null && view.isView) {
          model.imageView = view;
@@ -80,6 +80,21 @@ function MainController(model, isViewTarget) {
       else {
          model.imageView = null;
          this.view.imageViewList.currentView = this.view.imageViewListNull;
+      }
+
+      this.enableControls();
+   };
+*/
+   this.setImageWindow = function(window) {
+      if (window != null && window.mainView.isView) {
+        model.imageWindow = window;
+        model.imageView = window.currentView;
+        this.view.imageViewList.currentView = model.imageView;
+      }
+      else {
+        model.imageView = null;
+        model.imageWindow = null;
+        this.view.imageViewList.currentView = this.view.imageViewListNull;
       }
 
       this.enableControls();
@@ -115,6 +130,15 @@ function MainController(model, isViewTarget) {
 
       model.protectStars = model.defProtectStars;
       this.view.protectStarsCheckBox.checked = model.protectStars;
+
+      model.applyMask = model.defApplyMask;
+      this.view.applyMaskCheckBox.checked = model.applyMask;
+
+      model.invertMask = model.defInvertMask;
+      this.view.invertMaskCheckBox.checked = model.invertMask;
+
+      model.hideMask = model.defHideMask;
+      this.view.hideMaskCheckBox.checked = model.hideMask;
 
       model.keepMasksOpen = model.defKeepMasksOpen;
       this.view.keepMasksOpenCheckBox.checked = model.keepMasksOpen;
@@ -193,6 +217,9 @@ function MainController(model, isViewTarget) {
       this.view.grayPercentNumericControl.enabled = false;
       this.view.protectStarsCheckBox.enabled = false;
       this.view.keepMasksOpenCheckBox.enabled = false;
+      this.view.applyMaskCheckBox.enabled = false;
+      this.view.invertMaskCheckBox.enabled = false;
+      this.view.hideMaskCheckBox.enabled = false;
 
       this.view.useClassicStarMaskCheckBox.enabled = false;
       this.view.useHDRMCheckBox.enabled = false;
@@ -234,12 +261,51 @@ function MainController(model, isViewTarget) {
    };
 
    this.enableControls = function() {
-
+     if ( model.maskPreview != null )
+     {
+       this.view.applyMaskCheckBox.enabled = true;
+       if (model.applyMask)
+       {
+         this.view.invertMaskCheckBox.enabled = true;
+         this.view.hideMaskCheckBox.enabled = true;
+       }
+       else {
+         this.view.invertMaskCheckBox.enabled = false;
+         this.view.hideMaskCheckBox.enabled = false;
+       }
+       this.view.previewBaseRangeMaskButton.enabled = false;
+       this.view.previewStarMaskButton.enabled = false;
+       this.view.previewLargeStarMaskButton.enabled = false;
+       this.view.closeBaseRangeMaskPreviewButton.enabled = false;
+       this.view.closeStarMaskPreviewButton.enabled = false;
+       this.view.closeLargeStarMaskPreviewButton.enabled = false;
+       if (model.beingPreviewed == model.BASE ) {
+         this.view.closeBaseRangeMaskPreviewButton.enabled = true;
+       }
+       else if ( model.beingPreviewed == model.STARS ) {
+         this.view.closeStarMaskPreviewButton.enabled = true;
+       }
+       else if ( model.beingPreviewed == model.LSTARS ) {
+         this.view.closeLargeStarMaskPreviewButton.enabled = true;
+       }
+     }
+     else {
       this.view.imageViewList.enabled = true;
 
       this.view.grayPercentNumericControl.enabled = true;
       this.view.protectStarsCheckBox.enabled = true;
       this.view.keepMasksOpenCheckBox.enabled = true;
+
+      this.view.applyMaskCheckBox.enabled = true;
+      if (model.applyMask)
+      {
+        this.view.invertMaskCheckBox.enabled = true;
+        this.view.hideMaskCheckBox.enabled = true;
+      }
+      else {
+        this.view.invertMaskCheckBox.enabled = false;
+        this.view.hideMaskCheckBox.enabled = false;
+      }
 
       if ( model.protectStars )
       {
@@ -253,7 +319,6 @@ function MainController(model, isViewTarget) {
             this.view.previewStarMaskButton.enabled = false;
          }
          this.view.closeStarMaskPreviewButton.enabled = false;
-
       }
       else
       {
@@ -369,6 +434,7 @@ function MainController(model, isViewTarget) {
          this.view.makeMaskButton.toolTip = "<p>Create Mask.</p><p>Image must be selected</p>";
       }
       this.view.dismissButton.enabled = true;
+    }
    };
 
    this.imageViewOnViewSelected = function(view) {
@@ -395,6 +461,54 @@ function MainController(model, isViewTarget) {
       model.keepMasksOpen = checked;
       this.enableControls();
    };
+
+   this.applyMaskCheck = function(checked) {
+     model.applyMask = checked;
+     if (checked)
+     {
+       if ( model.maskPreview != null )
+       {
+         model.imageWindow.setMask(model.maskPreview);
+         model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+         model.imageWindow.maskInverted = model.invertMask;
+         model.imageWindow.bringToFront();
+       }
+       else if ( model.dsoMaskView != null ) {
+         model.imageWindow.setMask(model.dsoMaskView);
+         model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+         model.imageWindow.maskInverted = model.invertMask;
+         model.imageWindow.bringToFront();
+       }
+     }
+     else {
+        if ( model.maskPreview != null )
+        {
+          model.imageWindow.removeMask();
+          model.maskPreview.bringToFront();
+        }
+        else if (model.dsoMaskView != null ){
+          model.imageWindow.removeMask();
+          model.dsoMaskView.bringToFront();
+        }
+     }
+     this.enableControls();
+   }
+
+   this.invertMaskCheck = function(checked) {
+     model.invertMask = checked;
+     if ( model.imageWindow != null ) {
+       model.imageWindow.maskInverted = model.invertMask;
+     }
+     this.enableControls();
+   }
+
+   this.hideMaskCheck = function(checked) {
+     model.hideMask = checked;
+     if (model.imageWindow != null) {
+       model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+     }
+     this.enableControls();
+   }
 
    this.useClassicStarMaskCheck = function(checked) {
       model.useClassicStarMask = checked;
@@ -629,7 +743,7 @@ function MainController(model, isViewTarget) {
       console.flush();
       console.hide();
       gc();
-
+      this.enableControls();
    };
 
    this.previewStarMask = function() {
@@ -658,7 +772,7 @@ function MainController(model, isViewTarget) {
       console.flush();
       console.hide();
       gc();
-
+      this.enableControls();
    };
 
 
@@ -688,17 +802,19 @@ function MainController(model, isViewTarget) {
       console.flush();
       console.hide();
       gc();
-
+      this.enableControls();
    };
 
    this.closePreview = function() {
-      //this.view.previewBaseRangeMaskButton.enabled = true;
-      //this.view.closeBaseRangeMaskPreviewButton.enabled = false;
-      if ( model.maskPreview != null ) {
-         model.maskPreview.forceClose();
-         model.maskPreview = null;
-      }
-      this.enableControls();
+    this.disableControls();
+    if ( model.maskPreview != null ) {
+      model.imageWindow.removeMask();
+
+      model.maskPreview.forceClose();
+      model.maskPreview = null;
+      model.beingPreviewed = model.NONE;
+    }
+    this.enableControls();
    }
 
    this.makeMask = function() {
@@ -1050,6 +1166,72 @@ function MainView(model, controller) {
             );
 
             this.keepMasksOpenPane.addStretch();
+         }
+
+         {
+           this.maskControlPane = this.addPane(this.settingsSection);
+           {
+              this.applyMaskPane = this.addHorizontalSizer(this.maskControlPane);
+              this.applyMaskPane.addUnscaledSpacing(this.labelWidth);
+
+              this.applyMaskPane.addSpacing(
+                 this.applyMaskPane.spacing
+              );
+
+              this.applyMaskCheckBox = this.addCheckBox(
+                 this.applyMaskPane,
+                 "Apply mask",
+                 model.applyMask,
+                 "<p>If checked, then DSO mask or " +
+                 "(if preview) star masks, range masks, etc. will be applied " +
+                 "to source view.</p>",
+                 function(checked) {
+                    controller.applyMaskCheck(checked);
+                 }
+               );
+           }
+
+           {
+              this.invertMaskPane = this.addHorizontalSizer(this.maskControlPane);
+
+              this.invertMaskPane.addSpacing(
+                 this.invertMaskPane.spacing
+              );
+
+              this.invertMaskCheckBox = this.addCheckBox(
+                 this.invertMaskPane,
+                 "Invert mask",
+                 model.invertMask,
+                 "<p>If checked, then DSO mask or " +
+                 "(if preview) star masks, range masks, etc. will be, if applied " +
+                 "inverted in the source view.</p>",
+                 function(checked) {
+                    controller.invertMaskCheck(checked);
+                 }
+               );
+           }
+
+           {
+              this.hideMaskPane = this.addHorizontalSizer(this.maskControlPane);
+
+              this.hideMaskPane.addSpacing(
+                 this.hideMaskPane.spacing
+              );
+
+              this.hideMaskCheckBox = this.addCheckBox(
+                 this.hideMaskPane,
+                 "Hide mask",
+                 model.hideMask,
+                 "<p>If checked, then DSO mask or " +
+                 "(if preview) star masks, range masks, etc. will be, if applied " +
+                 "hidden in the source view.</p>",
+                 function(checked) {
+                    controller.hideMaskCheck(checked);
+                 }
+               );
+           }
+
+           this.maskControlPane.addStretch();
          }
       }
    }

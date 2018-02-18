@@ -3,7 +3,16 @@ function MainModel() {
   // Image view.
   this.imageViewFormat = "%s";
   this.imageView = null;
+  this.imageWindow = null;
   this.maskPreview = null;
+  this.dsoMaskWindow = null;
+
+  this.NONE = 0;
+  this.BASE = 1;
+  this.STARS = 2;
+  this.LSTARS = 3;
+
+  this.beingPreviewed = this.NONE;
 
   this.defGrayPercent = 0.4;
   this.grayPercent = this.defGrayPercent;
@@ -13,6 +22,15 @@ function MainModel() {
 
   this.defKeepMasksOpen = false;
   this.keepMasksOpen = this.defKeepMasksOpen;
+
+  this.defApplyMask = false;
+  this.applyMask = this.defApplyMask;
+
+  this.defInvertMask = false;
+  this.invertMask = this.defInvertMask;
+
+  this.defHideMask = false;
+  this.hideMask = this.defHideMask;
 
   this.defUseClassicStarMask = false;
   this.useClassicStarMask = this.defUseClassicStarMask;

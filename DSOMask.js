@@ -42,7 +42,8 @@ function main() {
       controller.setImageView(Parameters.targetView);
    }
    else {
-      controller.setImageView(ImageWindow.activeWindow.currentView);
+//      controller.setImageView(ImageWindow.activeWindow.currentView);
+      controller.setImageWindow(ImageWindow.activeWindow)
    }
 
    console.abortEnabled = true;

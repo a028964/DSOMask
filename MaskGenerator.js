@@ -56,6 +56,16 @@ function MaskGenerator(model, view) {
       model.maskPreview.zoomFactor=12;
       model.maskPreview.fitWindow();
       model.maskPreview.zoomToOptimalFit();
+      model.beingPreviewed = model.BASE;
+      if ( model.applyMask ) {
+        model.imageWindow.setMask(model.maskPreview);
+        model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+        model.imageWindow.maskInverted = model.invertMask;
+        model.imageWindow.bringToFront();
+      }
+      else {
+        model.maskPreview.bringToFront();
+      }
    }
 
    this.previewStarMask = function() {
@@ -84,6 +94,16 @@ function MaskGenerator(model, view) {
       model.maskPreview.show();
       this.starMaskView.forceClose();
       this.sourceView.forceClose();
+      model.beingPreviewed = model.STARS;
+      if ( model.applyMask ) {
+        model.imageWindow.setMask(model.maskPreview);
+        model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+        model.imageWindow.maskInverted = model.invertMask;
+        model.imageWindow.bringToFront();
+      }
+      else {
+        model.maskPreview.bringToFront();
+      }
    }
 
    this.previewLargeStarRangeMask = function() {
@@ -119,6 +139,16 @@ function MaskGenerator(model, view) {
          }
       }
       model.maskPreview.show();
+      model.beingPreviewed = model.LSTARS;
+      if ( model.applyMask ) {
+        model.imageWindow.setMask(model.maskPreview);
+        model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+        model.imageWindow.maskInverted = model.invertMask;
+        model.imageWindow.bringToFront();
+      }
+      else {
+        model.maskPreview.bringToFront();
+      }
 
    }
 
@@ -1296,6 +1326,8 @@ function MaskGenerator(model, view) {
    // Entry point for mask creation.
    this.createMask = function() {
 
+      model.imageWindow.removeMask();
+      
       this.getSourceView();
 
       if ( model.protectStars )
@@ -1327,6 +1359,15 @@ function MaskGenerator(model, view) {
       this.newMaskView.fitWindow();
       this.newMaskView.zoomToOptimalFit();
       this.newMaskView.show();
+
+      model.dsoMaskView = this.newMaskView;
+
+      if ( model.applyMask ) {
+        model.imageWindow.setMask(model.dsoMaskView);
+        model.imageWindow.maskVisible = model.hideMask == true ? false : true;
+        model.imageWindow.maskInverted = model.invertMask;
+        model.imageWindow.bringToFront();
+      }
 
       this.sourceView.forceClose();
 
