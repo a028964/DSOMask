@@ -1,8 +1,14 @@
 ===============================================================================
 DSOMask Script Changelog
 ===============================================================================
+-------------------------------------------------------------------------------
+           - v1.2:
 
--------------------------------------------
+- Added apply, invert and hide check box to apply a mask to the source image
+  and then invert or hide it. The mask applied to the source image can be the
+  final DSO mask created or any of the previews.
+
+-------------------------------------------------------------------------------
            - v1.1:
 
 - Added preview buttons to preview star and range masks prior to mask creation.
