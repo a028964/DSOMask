@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+   <title>PixInsight Reference Documentation | DSOMask</title>
+   <meta name="keywords" content="mask creation" />
+   <meta name="author" content="Bradley Craig" />
+   <meta name="description" content="Facilitates target mask creation for isolating image target for further processing." />
+   <meta name="robots" content="INDEX,FOLLOW" />
+   <meta name="generator" content="PixInsight Documentation Compiler script version 1.6.2" />
+   <script type="text/javascript" src="../../pidoc/scripts/pidoc-utility.js"></script>
+   <link type="text/css" href="../../pidoc/css/pidoc-common.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-highlight.css" rel="stylesheet" />
+   <link type="text/css" href="../../pidoc/css/pidoc-tool.css" rel="stylesheet" />
+   <link rel="icon" href="../../pidoc/icons/pidoc-icon.png" type="image/png" />
+   <link rel="shortcut icon" href="../../pidoc/icons/pidoc-icon.png" type="image/png" />
+</head>
+<body>
+<script type="text/javascript">
+   pidoc_generateDynamicContents();
+</script>
+
+<h1>DSOMask</h1>
+
+<div id="authors">
+<p>By Bradley Craig</p>
+</div>
+
+<hr class="separator"/>
+
+<div id="brief">
+<p>Facilitates target mask creation for isolating image target for further processing. <a href="#__contents__">[more]</a></p></div>
+
+<div id="keywords">
+<p><strong>Keywords:</strong> mask creation</p>
+</div>
+
+<h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
+<p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'toc', this );">[hide]</p>
+<div id="toc">
+<ul>
+<li class="pidoc_tocItem"><a href="#__Description__">1&emsp;Description</a></li>
+<li class="pidoc_tocItem"><a href="#__Usage__">2&emsp;Usage</a>
+<ul>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Source_Image__">2.1&emsp;Source Image</a></li>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Settings__">2.2&emsp;Settings</a></li>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Base_Mask__">2.3&emsp;Base Mask</a></li>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Star_Mask__">2.4&emsp;Star Mask</a></li>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Large_Star_Mask__">2.5&emsp;Large Star Mask</a></li>
+<li class="pidoc_tocSubitem"><a href="#__Usage_:_Examples__">2.6&emsp;Examples</a></li>
+</ul>
+</li>
+<li class="pidoc_tocItem"><a href="#__relatedTools__">Related Tools</a></li>
+</ul>
+</div>
+
+<div id="__contents__">
+
+<div class="pidoc_section" id="__Description__">
+   <h3 class="pidoc_sectionTitle">1&emsp;Description</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Description', this );">[hide]</p>
+   <div id="Description">
+<img src="images/DSOMask.png" alt=""/>
+<p>The DSOMask script brings together core PixInsight processes to create a mask for protecting the target signal of an image for further processing. DSOMask provides the following functions:</p>
+
+<ul class="pidoc_list">
+<li><a href="#settings">Settings</a> to control aspects of mask creation and final combination.</li>
+<li>Ability to define the <a href="#base_mask">base mask</a> of the source image to protect the target.</li>
+<li>Ability to define a <a href="#star_mask">star mask</a> to protect stars.</li>
+<li>Ability to define a <a href="#large_star_mask">large star mask</a> to protect larger stars.</li>
+<li>Ability to <a href="#combine">combine</a> them in multiple ways to create the desired mask.</li>
+</ul>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__Usage__">
+   <h3 class="pidoc_sectionTitle">2&emsp;Usage</h3>
+   <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Usage', this );">[hide]</p>
+   <div id="Usage">
+<div class="pidoc_subsection" id="__Usage_:_Source_Image__">
+   <h4 class="pidoc_subsectionTitle">2.1&emsp;Source Image</h4>
+<img src="images/image_selection.png" alt=""/>
+
+<dl class="pidoc_list">
+<dt>
+<p>Image</p>
+</dt>
+<dd>
+<p>Select the source image from the drop down box. The image can be color or mono.</p>
+</dd>
+</dl>
+
+</div>
+
+<div class="pidoc_subsection" id="__Usage_:_Settings__">
+   <h4 class="pidoc_subsectionTitle">2.2&emsp;<a id="settings"></a>Settings</h4>
+<img src="images/dso_settings.png" alt=""/>
+
+<dl class="pidoc_list">
+<dt>
+<p>Use range mask for base image</p>
+</dt>
+<dd>
+<p>If selected, the PixInsight <em>RangeSelection</em> process will be executed on the source image using the settings defined in the <a href="#base_mask">base mask</a> section to create the base image for the mask.</p>
+<p>Otherwise, the PixInsight <em>ATrousWaveletTransform</em> process will be executed on the source image to create the base image for the mask. The <em>ATrousWaveletTransform</em> process will have the first layer disabled to remove stars.</p>
+</dd>
+<dt>
+<p>Precent gray</p>
+</dt>
+<dd>
+<p>Controls the amount of grayness in the final mask. If this is set to 0 (zero) then the final mask will be that of the base mask.</p>
+<p>If this is set to a non-zero amount, then that will be used to build a gray mask first and then use the <em>minimum</em> function on the gray mask and the base mask.</p>
+</dd>
+<dt>
+<p>Protect stars</p>
+</dt>
+<dd>
+<p>If selected then a <a href="#star_mask">star mask</a> will be generated to apply star protection in the final mask.</p>
+<p>Optionally, a <a href="#large_star_mask">large star mask</a> for use in the final mask to protect larger stars not covered in the star mask is enabled.</p>
+</dd>
+<dt>
+<p>Keep masks open</p>
+</dt>
+<dd>
+<p>If selected, then in addition to the final mask, any supporting masks used will remain open.</p>
+<p>If not selected, then only the final mask will remain open.</p>
+</dd>
+<dt>
+<p><a id="apply_mask"></a> Apply mask</p>
+</dt>
+<dd>
+<p>If selected, then the final mask will be applied to the source image.</p>
+<p>If previewing any of the supporting masks, then they will be applied to the source image.</p>
+</dd>
+<dt>
+<p>Invert mask</p>
+</dt>
+<dd>
+<p>If selected, the currently applied mask on the source image will be inverted.</p>
+</dd>
+<dt>
+<p>Hide mask</p>
+</dt>
+<dd>
+<p>If selected, the currently applied mask on the source image will be hidden.</p>
+</dd>
+</dl>
+
+</div>
+
+<div class="pidoc_subsection" id="__Usage_:_Base_Mask__">
+   <h4 class="pidoc_subsectionTitle">2.3&emsp;<a id="base_mask"></a>Base Mask</h4>
+<img src="images/dso_base_mask.png" alt=""/>
+
+<dl class="pidoc_list">
+<dt>
+<p>Preview</p>
+</dt>
+<dd>
+<p>Execute the <em>RangeSelection</em> process with the current settings and open a window with the results. The results can be applied to the source image using <a href="#apply_mask">apply mask</a> setting.</p>
+</dd>
+<dt>
+<p>Close Preview</p>
+</dt>
+<dd>
+<p>Close the open base mask preview.</p>
+</dd>
+<dt>
+<p>Lower limit</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> lower limit setting.</p>
+</dd>
+<dt>
+<p>Upper limit</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> upper limit setting.</p>
+</dd>
+<dt>
+<p>Fuzziness</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> fuzziness limit setting.</p>
+</dd>
+<dt>
+<p>Smoothness</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> smoothness limit setting.</p>
+</dd>
+</dl>
+
+</div>
+
+<div class="pidoc_subsection" id="__Usage_:_Star_Mask__">
+   <h4 class="pidoc_subsectionTitle">2.4&emsp;<a id="star_mask"></a>Star Mask</h4>
+<img src="images/dso_star_mask.png" alt=""/>
+
+<dl class="pidoc_list">
+<dt>
+<p>Preview</p>
+</dt>
+<dd>
+<p>Execute the <em>StarMask</em> process with the current settings and open a window with the results. The results can be applied to the source image using <a href="#apply_mask">apply mask</a> setting.</p>
+</dd>
+<dt>
+<p>Close Preview</p>
+</dt>
+<dd>
+<p>Close the open star mask preview.</p>
+</dd>
+<dt>
+<p>Use classic star mask</p>
+</dt>
+<dd>
+<p>Create the star mask using the script <em>ClassicStarMask</em> approach.</p>
+</dd>
+<dt>
+<p>Use HDRM for star mask</p>
+</dt>
+<dd>
+<p>Applies <em>HDRMultiscaleTransform</em> to source image before star mask creation using <em>StarMask</em>.</p>
+</dd>
+<dt>
+<p>Threshold</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> threshold setting.</p>
+</dd>
+<dt>
+<p>Scale</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> scale setting.</p>
+</dd>
+<dt>
+<p>Large Scale</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> large scale setting.</p>
+</dd>
+<dt>
+<p>Compensation</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> compensation setting.</p>
+</dd>
+<dt>
+<p>Small scale</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> small scale setting.</p>
+</dd>
+<dt>
+<p>Smoothness</p>
+</dt>
+<dd>
+<p>The <em>StarMask</em> smoothness setting.</p>
+</dd>
+</dl>
+
+</div>
+
+<div class="pidoc_subsection" id="__Usage_:_Large_Star_Mask__">
+   <h4 class="pidoc_subsectionTitle">2.5&emsp;<a id="large_star_mask"></a>Large Star Mask</h4>
+<img src="images/dso_large_stars.png" alt=""/>
+
+<dl class="pidoc_list">
+<dt>
+<p>Use range mask for large stars</p>
+</dt>
+<dd>
+<p>Enable up to 3 <em>RangeSelection</em> processes to isolate large stars for protection in the final mask.</p>
+</dd>
+<dt>
+<p>Preview</p>
+</dt>
+<dd>
+<p>Execute the <em>RangeSelection</em> process with the current settings and open a window with the results. The results can be applied to the source image using <a href="#apply_mask">apply mask</a> setting.</p>
+</dd>
+<dt>
+<p>Close Preview</p>
+</dt>
+<dd>
+<p>Close the open star mask preview.</p>
+</dd>
+<dt>
+<p>Lower limit</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> lower limit setting.</p>
+</dd>
+<dt>
+<p>Upper limit</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> upper limit setting.</p>
+</dd>
+<dt>
+<p>Fuzziness</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> fuzziness limit setting.</p>
+</dd>
+<dt>
+<p>Smoothness</p>
+</dt>
+<dd>
+<p>The <em>RangeSelection</em> smoothness limit setting.</p>
+</dd>
+</dl>
+
+</div>
+
+<div class="pidoc_subsection" id="__Usage_:_Examples__">
+   <h4 class="pidoc_subsectionTitle">2.6&emsp;<a id="combine"></a>Examples</h4>
+<p>Let's look at some examples of what DSOMask can do using NGC 1499.</p>
+<img src="images/example1.png" alt=""/>
+<p>Let's start with the simplest settings. No star protection and using the source image as the mask. The following shows the resulting mask, which is just the gray scale starless version of the image.</p>
+<img src="images/example2.png" alt=""/>
+<p>And with the mask applied to the source image.</p>
+<img src="images/example3.png" alt=""/>
+<p>Now let's add in star protection.</p>
+<img src="images/example4.png" alt=""/>
+<p>And the resulting mask.</p>
+<img src="images/example5.png" alt=""/>
+<p>Now let's create a range mask, with star protection.</p>
+<img src="images/example6.png" alt=""/>
+<p>And the resulting mask.</p>
+<img src="images/example7.png" alt=""/>
+<p>And the mask applied to the source image.</p>
+<img src="images/example8.png" alt=""/>
+<p>Let's try and protect some of the bigger stars more.</p>
+<img src="images/example9.png" alt=""/>
+<p>But first let's preview what the large star mask looks like with the current settings.</p>
+<img src="images/example10.png" alt=""/>
+<p>Looks good, now let's see the final mask.</p>
+<img src="images/example11.png" alt=""/>
+</div>
+
+   </div>
+</div>
+
+<div class="pidoc_section" id="__related_tools__">
+   <h3 class="pidoc_sectionTitle">Related Tools</h3>
+   <div id="related_tools">
+<p><a href="../../tools/RangeMask/RangeMask.html" title="../../tools/RangeMask/RangeMask.html">RangeMask</a>, <a href="../../tools/StarMask/StarMask.html" title="../../tools/StarMask/StarMask.html">StarMask</a>, <a href="../../tools/PixelMath/PixelMath.html" title="../../tools/PixelMath/PixelMath.html">PixelMath</a></p>
+   </div>
+</div>
+
+<hr class="separator"/>
+
+<div id="copyright">
+   <p>Copyright &copy; 2018 Bradley Craig. All Rights Reserved.</p>
+</div>
+
+<div id="footer">
+   <p>Generated by the PixInsight Documentation Compiler script version 1.6.2 on 2018-02-19 05:13:45 UTC</p>
+</div>
+<br/>
+<br/>
+
+</div> <!-- contents -->
+
+</body>
+</html>

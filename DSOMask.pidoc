@@ -1,0 +1,269 @@
+
+\documentclass PIScriptDoc
+
+\script DSOMask
+
+\keywords {
+   mask creation
+}
+
+\author {
+   Bradley Craig
+}
+
+\copyright {
+   2018 Bradley Craig. All Rights Reserved.
+}
+
+\brief {
+   Facilitates target mask creation for isolating image target for further processing.
+}
+
+\description {
+\image Images/DSOMask.png
+
+   The DSOMask script brings together core PixInsight processes to create a mask for protecting the target signal of an image for further processing.
+   DSOMask provides the following functions:
+
+   \list {
+      {
+      \lref settings {Settings} to control aspects of mask creation and final combination.
+      }
+      {
+      Ability to define the \lref base_mask {base mask} of the source image to protect the target.
+      }
+      {
+      Ability to define a \lref star_mask {star mask} to protect stars.
+      }
+      {
+      Ability to define a \lref large_star_mask {large star mask} to protect larger stars.
+      }
+      {
+      Ability to \lref combine {combine} them in multiple ways to create the desired mask.
+      }
+   }
+}
+
+\usage {
+  \subsection { Source Image } {
+  \image Images/image_selection.png
+
+    \definition {
+      { Image } {
+         Select the source image from the drop down box. The image can be color or mono.
+      }
+    }
+
+  }
+
+  \subsection { \label settings Settings } {
+  \image Images/dso_settings.png
+
+  \definition {
+
+      { Use range mask for base image } {
+         If selected, the PixInsight \e { RangeSelection } process will be executed on the source image
+         using the settings defined in the \lref base_mask {base mask} section to create the base
+         image for the mask.
+
+         Otherwise, the PixInsight \e { ATrousWaveletTransform } process will be executed on the source
+         image to create the base image for the mask. The \e { ATrousWaveletTransform } process will
+         have the first layer disabled to remove stars.
+      }
+
+      { Precent gray } {
+         Controls the amount of grayness in the final mask. If this is set to 0 (zero) then the
+         final mask will be that of the base mask.
+
+         If this is set to a non-zero amount, then that will be used to build a gray mask first
+         and then use the \e { minimum } function on the gray mask and the base mask.
+      }
+
+      { Protect stars } {
+         If selected then a \lref star_mask {star mask} will be generated to apply star protection
+         in the final mask.
+
+         Optionally, a \lref large_star_mask { large star mask } for use in the final
+         mask to protect larger stars not covered in the star mask is enabled.
+      }
+
+      { Keep masks open } {
+         If selected, then in addition to the final mask, any supporting masks used will remain open.
+
+         If not selected, then only the final mask will remain open.
+      }
+
+      { \label apply_mask Apply mask } {
+         If selected, then the final mask will be applied to the source image.
+
+         If previewing any of the supporting masks, then they will be applied to the source image.
+      }
+
+      { Invert mask } {
+         If selected, the currently applied mask on the source image will be inverted.
+      }
+
+      { Hide mask } {
+         If selected, the currently applied mask on the source image will be hidden.
+      }
+
+    }
+
+  }
+
+  \subsection { \label base_mask Base Mask } {
+  \image Images/dso_base_mask.png
+
+    \definition {
+
+      { Preview } {
+         Execute the \e { RangeSelection } process with the current settings and open a window
+         with the results. The results can be applied to the source image using
+         \lref apply_mask {apply mask} setting.
+      }
+
+      { Close Preview } {
+         Close the open base mask preview.
+      }
+
+      { Lower limit } {
+         The \e {RangeSelection} lower limit setting.
+      }
+
+      { Upper limit } {
+        The \e {RangeSelection} upper limit setting.
+      }
+
+      { Fuzziness } {
+        The \e {RangeSelection} fuzziness limit setting.
+      }
+
+      { Smoothness } {
+        The \e {RangeSelection} smoothness limit setting.
+      }
+
+    }
+
+  }
+
+  \subsection { \label star_mask Star Mask } {
+  \image Images/dso_star_mask.png
+    \definition {
+
+      { Preview } {
+         Execute the \e { StarMask } process with the current settings and open a window
+         with the results. The results can be applied to the source image using
+         \lref apply_mask {apply mask} setting.
+      }
+
+      { Close Preview } {
+         Close the open star mask preview.
+      }
+
+      { Use classic star mask } {
+         Create the star mask using the script \e {ClassicStarMask} approach.
+      }
+
+      { Use HDRM for star mask } {
+        Applies \e {HDRMultiscaleTransform} to source image before star mask creation using
+        \e { StarMask }.
+      }
+
+      { Threshold } {
+        The \e { StarMask } threshold setting.
+      }
+
+      { Scale } {
+        The \e { StarMask } scale setting.
+      }
+
+      { Large Scale } {
+        The \e { StarMask } large scale setting.
+      }
+
+      { Compensation } {
+        The \e { StarMask } compensation setting.
+      }
+
+      { Small scale } {
+        The \e { StarMask } small scale setting.
+      }
+
+      { Smoothness } {
+        The \e { StarMask } smoothness setting.
+      }
+
+    }
+  }
+
+  \subsection { \label large_star_mask Large Star Mask } {
+  \image Images/dso_large_stars.png
+    \definition {
+
+      { Use range mask for large stars } {
+         Enable up to 3 \e { RangeSelection } processes to isolate large stars for protection in
+         the final mask.
+      }
+
+      { Preview } {
+         Execute the \e { RangeSelection } process with the current settings and open a window
+         with the results. The results can be applied to the source image using
+         \lref apply_mask {apply mask} setting.
+      }
+
+      { Close Preview } {
+         Close the open star mask preview.
+      }
+
+      { Lower limit } {
+         The \e {RangeSelection} lower limit setting.
+      }
+
+      { Upper limit } {
+        The \e {RangeSelection} upper limit setting.
+      }
+
+      { Fuzziness } {
+        The \e {RangeSelection} fuzziness limit setting.
+      }
+
+      { Smoothness } {
+        The \e {RangeSelection} smoothness limit setting.
+      }
+
+    }
+  }
+
+  \subsection { \label combine Examples } {
+  Let's look at some examples of what DSOMask can do using NGC 1499.
+  \image Images/example1.png
+  Let's start with the simplest settings. No star protection and using the source image as the mask. The following
+  shows the resulting mask, which is just the gray scale starless version of the image.
+  \image Images/example2.png
+  And with the mask applied to the source image.
+  \image Images/example3.png
+
+  Now let's add in star protection.
+  \image Images/example4.png
+  And the resulting mask.
+  \image Images/example5.png
+
+  Now let's create a range mask, with star protection.
+  \image Images/example6.png
+  And the resulting mask.
+  \image Images/example7.png
+  And the mask applied to the source image.
+  \image Images/example8.png
+  Let's try and protect some of the bigger stars more.
+  \image Images/example9.png
+  But first let's preview what the large star mask looks like with the current settings.
+  \image Images/example10.png
+  Looks good, now let's see the final mask.
+  \image Images/example11.png
+  }
+}
+
+\relatedtools {
+   RangeMask, StarMask, PixelMath
+}
+\make
