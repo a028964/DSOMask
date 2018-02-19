@@ -2,6 +2,15 @@
 DSOMask Script Changelog
 ===============================================================================
 -------------------------------------------------------------------------------
+           - v1.2.1:
+
+- Added pidoc documentation.
+
+- Added packaged releases.
+
+- Added installation instructions.
+
+-------------------------------------------------------------------------------
            - v1.2:
 
 - Added apply, invert and hide check box to apply a mask to the source image

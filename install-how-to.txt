@@ -1,0 +1,16 @@
+1 - Download latest release from https://github.com/a028964/DSOMask/releases.
+
+2 - Extract contents of .zip or .tar.gz.
+
+3 - Copy the DSOMask folder from the src/scripts folder in the root directory
+    where you extracted the contents of the release and paste it to the
+    src/scripts folder in your PixInsight installation
+
+4 - Copy the DSOMask folder from the doc/scripts folder in the root directory
+    where you extracted the contents of the release and paste it to the
+    doc/scripts folder in your PixInsight installation.
+
+5 - In PixInsight choose Script -> Feature Scripts... from the menu bar.
+
+6 - Click Add, and navigate to src/scripts in your PixInsight installation
+    and select the DSOMask folder.
