@@ -4,7 +4,7 @@
 \script DSOMask
 
 \keywords {
-   mask creation
+   mask star protection nebula mask
 }
 
 \author {
@@ -16,31 +16,114 @@
 }
 
 \brief {
-   Facilitates target mask creation for isolating image target for further processing.
+   Facilitates target mask creation for isolating image target for further
+   processing.
 }
 
 \description {
 \image Images/DSOMask.png
 
-   The DSOMask script brings together core PixInsight processes to create a mask for protecting the target signal of an image for further processing.
+   The DSOMask script brings together core PixInsight processes to create a
+   mask for protecting the target signal of an image for further processing.
+
    DSOMask provides the following functions:
 
    \list {
       {
-      \lref settings {Settings} to control aspects of mask creation and final combination.
+      \lref settings {Settings} to control aspects of mask creation and
+      final combination.
       }
       {
-      Ability to define the \lref base_mask {base mask} of the source image to protect the target.
+      Ability to define the \lref base_mask {base mask} of the source image
+      to protect the target.
       }
       {
       Ability to define a \lref star_mask {star mask} to protect stars.
       }
       {
-      Ability to define a \lref large_star_mask {large star mask} to protect larger stars.
+      Ability to define a \lref large_star_mask {large star mask} to protect
+      larger stars.
       }
       {
-      Ability to \lref combine {combine} them in multiple ways to create the desired mask.
+      Ability to \lref examples { combine } them in multiple ways to
+      \lref creation { create } the desired mask.
       }
+      {
+      Ability to preview any of the supporting masks that will be used in
+      creating the final mask.
+      }
+      {
+      Ability to apply the final mask or a previewed mask to the source image
+      and then invert and/or hide the mask on the source image.
+      }
+      {
+      Ability to preserve script settings between sessions of the script using
+      the PixInsight Core JavaScript Settings object.
+      }
+      {
+      Ability to preserve script settings for a particular execution of the
+      script using the PixInsight Core JavaScript Parameters object.
+      }
+   }
+
+
+   \subsection {Mask Generator} {
+     \definition {
+        { Base Image } {
+          The base mask serves as the definition of the protection
+          for the main structure of the image. There are two methods of base
+          mask creation. One is using a standard \lref range_mask { RangeSelection }
+          process which is controlled by \lref base_mask { settings } on the
+          script dialog.
+
+          The other method, if not using a \lref range_mask { range mask } for
+          the base mask is a grayscale starless version of the source image.
+          This image is created using e\ { ATrousWaveletTransform } with the
+          first layer removed.
+
+          Call this image \s { BASE }.
+        }
+
+        { Star Mask } {
+          Optionally, a \lref protect_stars { star mask } can be created and
+          added to the final mask to allow for protection of the stars in the
+          image. Two methods are available for star mask creation. A standard
+          star mask can be a \e { StarMask } process controlled by \lref
+          star_mask { settings } on the script dialog.
+
+          The other method is to use the \lref classic_star_mask
+          { scripts->ClassicStarMask } script.
+
+          Call this image \s { STARS }.
+        }
+
+        { Larger Star Mask } {
+          Optionally, a \lref protect_large_stars { star mask } to protect larger
+          stars not covered by the star mask can be created. This is done by
+          using 1 to 3 \e { RangeSelection } processes controlled by \lref
+          large_star_mask { settings } on the script dialog.
+
+          Call this image \s { LSTARS }.
+        }
+
+        { Gray Mask } {
+          Optionally, a gray mask can be used to add some level of protection
+          for the signal of the main structure. This can be controlled by
+          \lref gray settings on the script dialog.
+
+          Call this image \s { GRAY }.
+        }
+
+        { Mask Construction } {
+          If the \s { GRAY } mask is utilized then the final mask is created by
+
+          \e \s { min( (GRAY | - (| STARS | LSTARS | STARS+LSTARS |) |), BASE ) }
+
+          Otherwise the final mask is created by
+
+          \e \s { BASE | - (| STARS | LSTARS | STARS + LSTARS |) | }
+        }
+     }
    }
 }
 
@@ -61,7 +144,7 @@
 
   \definition {
 
-      { Use range mask for base image } {
+      { \label range_mask Use range mask for base image } {
          If selected, the PixInsight \e { RangeSelection } process will be executed on the source image
          using the settings defined in the \lref base_mask {base mask} section to create the base
          image for the mask.
@@ -71,7 +154,7 @@
          have the first layer disabled to remove stars.
       }
 
-      { Precent gray } {
+      { \label gray Precent gray } {
          Controls the amount of grayness in the final mask. If this is set to 0 (zero) then the
          final mask will be that of the base mask.
 
@@ -79,7 +162,7 @@
          and then use the \e { minimum } function on the gray mask and the base mask.
       }
 
-      { Protect stars } {
+      { \label protect_stars Protect stars } {
          If selected then a \lref star_mask {star mask} will be generated to apply star protection
          in the final mask.
 
@@ -160,7 +243,7 @@
          Close the open star mask preview.
       }
 
-      { Use classic star mask } {
+      { \label classic_star_mask Use classic star mask } {
          Create the star mask using the script \e {ClassicStarMask} approach.
       }
 
@@ -200,7 +283,7 @@
   \image Images/dso_large_stars.png
     \definition {
 
-      { Use range mask for large stars } {
+      { \label protect_large_stars Use range mask for large stars } {
          Enable up to 3 \e { RangeSelection } processes to isolate large stars for protection in
          the final mask.
       }
@@ -234,12 +317,14 @@
     }
   }
 
-  \subsection { \label combine Examples } {
+  \subsection { \label examples Examples } {
   Let's look at some examples of what DSOMask can do using NGC 1499.
   \image Images/example1.png
+
   Let's start with the simplest settings. No star protection and using the source image as the mask. The following
   shows the resulting mask, which is just the gray scale starless version of the image.
   \image Images/example2.png
+
   And with the mask applied to the source image.
   \image Images/example3.png
 
@@ -248,22 +333,30 @@
   And the resulting mask.
   \image Images/example5.png
 
-  Now let's create a range mask, with star protection.
+  For another example, let's use a range mask as the base and add star protection.
   \image Images/example6.png
+
   And the resulting mask.
   \image Images/example7.png
+
   And the mask applied to the source image.
   \image Images/example8.png
-  Let's try and protect some of the bigger stars more.
+
+  Now let's add some protection for the bigger stars. We'll use 3 successive
+  \e {RangeSelection} processes. The first will be on the source image, and
+  the next 2 on the previous range mask.
   \image Images/example9.png
-  But first let's preview what the large star mask looks like with the current settings.
+
+  First let's preview what the large star mask looks like with the current
+  settings for the 3 \e { RangeSelection } processes.
   \image Images/example10.png
-  Looks good, now let's see the final mask.
+
+  Now let's see the final mask.
   \image Images/example11.png
   }
 }
 
 \relatedtools {
-   RangeMask, StarMask, PixelMath
+   RangeSelection, StarMask, PixelMath, ATrousWaveletTransform
 }
 \make

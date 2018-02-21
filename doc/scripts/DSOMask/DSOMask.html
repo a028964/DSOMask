@@ -3,7 +3,7 @@
 <head>
    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
    <title>PixInsight Reference Documentation | DSOMask</title>
-   <meta name="keywords" content="mask creation" />
+   <meta name="keywords" content="mask star protection nebula mask" />
    <meta name="author" content="Bradley Craig" />
    <meta name="description" content="Facilitates target mask creation for isolating image target for further processing." />
    <meta name="robots" content="INDEX,FOLLOW" />
@@ -32,14 +32,18 @@
 <p>Facilitates target mask creation for isolating image target for further processing. <a href="#__contents__">[more]</a></p></div>
 
 <div id="keywords">
-<p><strong>Keywords:</strong> mask creation</p>
+<p><strong>Keywords:</strong> mask star protection nebula mask</p>
 </div>
 
 <h3 class="pidoc_sectionTitle" id="__toc__">Contents</h3>
 <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'toc', this );">[hide]</p>
 <div id="toc">
 <ul>
-<li class="pidoc_tocItem"><a href="#__Description__">1&emsp;Description</a></li>
+<li class="pidoc_tocItem"><a href="#__Description__">1&emsp;Description</a>
+<ul>
+<li class="pidoc_tocSubitem"><a href="#__Description_:_Mask_Generator__">1.1&emsp;Mask Generator</a></li>
+</ul>
+</li>
 <li class="pidoc_tocItem"><a href="#__Usage__">2&emsp;Usage</a>
 <ul>
 <li class="pidoc_tocSubitem"><a href="#__Usage_:_Source_Image__">2.1&emsp;Source Image</a></li>
@@ -61,15 +65,67 @@
    <p class="pidoc_sectionToggleButton" onclick="pidoc_toggleSection( 'Description', this );">[hide]</p>
    <div id="Description">
 <img src="images/DSOMask.png" alt=""/>
-<p>The DSOMask script brings together core PixInsight processes to create a mask for protecting the target signal of an image for further processing. DSOMask provides the following functions:</p>
+<p>The DSOMask script brings together core PixInsight processes to create a mask for protecting the target signal of an image for further processing.</p>
+<p>DSOMask provides the following functions:</p>
 
 <ul class="pidoc_list">
 <li><a href="#settings">Settings</a> to control aspects of mask creation and final combination.</li>
 <li>Ability to define the <a href="#base_mask">base mask</a> of the source image to protect the target.</li>
 <li>Ability to define a <a href="#star_mask">star mask</a> to protect stars.</li>
 <li>Ability to define a <a href="#large_star_mask">large star mask</a> to protect larger stars.</li>
-<li>Ability to <a href="#combine">combine</a> them in multiple ways to create the desired mask.</li>
+<li>Ability to <a href="#examples">combine</a> them in multiple ways to <a href="#creation">create</a> the desired mask.</li>
+<li>Ability to preview any of the supporting masks that will be used in creating the final mask.</li>
+<li>Ability to apply the final mask or a previewed mask to the source image and then invert and/or hide the mask on the source image.</li>
+<li>Ability to preserve script settings between sessions of the script using the PixInsight Core JavaScript Settings object.</li>
+<li>Ability to preserve script settings for a particular execution of the script using the PixInsight Core JavaScript Parameters object.</li>
 </ul>
+
+<div class="pidoc_subsection" id="__Description_:_Mask_Generator__">
+   <h4 class="pidoc_subsectionTitle">1.1&emsp;Mask Generator</h4>
+
+<dl class="pidoc_list">
+<dt>
+<p>Base Image</p>
+</dt>
+<dd>
+<p>The base mask serves as the definition of the protection for the main structure of the image. There are two methods of base mask creation. One is using a standard <a href="#range_mask">RangeSelection</a> process which is controlled by <a href="#base_mask">settings</a> on the script dialog.</p>
+<p>The other method, if not using a <a href="#range_mask">range mask</a> for the base mask is a grayscale starless version of the source image. This image is created using e ATrousWaveletTransform with the first layer removed.</p>
+<p>Call this image <strong>BASE</strong>.</p>
+</dd>
+<dt>
+<p>Star Mask</p>
+</dt>
+<dd>
+<p>Optionally, a <a href="#protect_stars">star mask</a> can be created and added to the final mask to allow for protection of the stars in the image. Two methods are available for star mask creation. A standard star mask can be a <em>StarMask</em> process controlled by <a href="#star_mask">settings</a> on the script dialog.</p>
+<p>The other method is to use the <a href="#classic_star_mask">scripts-&gt;ClassicStarMask</a> script.</p>
+<p>Call this image <strong>STARS</strong>.</p>
+</dd>
+<dt>
+<p>Larger Star Mask</p>
+</dt>
+<dd>
+<p>Optionally, a <a href="#protect_large_stars">star mask</a> to protect larger stars not covered by the star mask can be created. This is done by using 1 to 3 <em>RangeSelection</em> processes controlled by <a href="#large_star_mask">settings</a> on the script dialog.</p>
+<p>Call this image <strong>LSTARS</strong>.</p>
+</dd>
+<dt>
+<p>Gray Mask</p>
+</dt>
+<dd>
+<p>Optionally, a gray mask can be used to add some level of protection for the signal of the main structure. This can be controlled by <a href="#gray">settings</a> on the script dialog.</p>
+<p>Call this image <strong>GRAY</strong>.</p>
+</dd>
+<dt>
+<p>Mask Construction</p>
+</dt>
+<dd>
+<p>If the <strong>GRAY</strong> mask is utilized then the final mask is created by</p>
+<p><em><strong>min( (GRAY | - (| STARS | LSTARS | STARS+LSTARS |) |), BASE )</strong></em></p>
+<p>Otherwise the final mask is created by</p>
+<p><em><strong>BASE | - (| STARS | LSTARS | STARS + LSTARS |) |</strong></em></p>
+</dd>
+</dl>
+
+</div>
 
    </div>
 </div>
@@ -99,21 +155,21 @@
 
 <dl class="pidoc_list">
 <dt>
-<p>Use range mask for base image</p>
+<p><a id="range_mask"></a> Use range mask for base image</p>
 </dt>
 <dd>
 <p>If selected, the PixInsight <em>RangeSelection</em> process will be executed on the source image using the settings defined in the <a href="#base_mask">base mask</a> section to create the base image for the mask.</p>
 <p>Otherwise, the PixInsight <em>ATrousWaveletTransform</em> process will be executed on the source image to create the base image for the mask. The <em>ATrousWaveletTransform</em> process will have the first layer disabled to remove stars.</p>
 </dd>
 <dt>
-<p>Precent gray</p>
+<p><a id="gray"></a> Precent gray</p>
 </dt>
 <dd>
 <p>Controls the amount of grayness in the final mask. If this is set to 0 (zero) then the final mask will be that of the base mask.</p>
 <p>If this is set to a non-zero amount, then that will be used to build a gray mask first and then use the <em>minimum</em> function on the gray mask and the base mask.</p>
 </dd>
 <dt>
-<p>Protect stars</p>
+<p><a id="protect_stars"></a> Protect stars</p>
 </dt>
 <dd>
 <p>If selected then a <a href="#star_mask">star mask</a> will be generated to apply star protection in the final mask.</p>
@@ -212,7 +268,7 @@
 <p>Close the open star mask preview.</p>
 </dd>
 <dt>
-<p>Use classic star mask</p>
+<p><a id="classic_star_mask"></a> Use classic star mask</p>
 </dt>
 <dd>
 <p>Create the star mask using the script <em>ClassicStarMask</em> approach.</p>
@@ -269,7 +325,7 @@
 
 <dl class="pidoc_list">
 <dt>
-<p>Use range mask for large stars</p>
+<p><a id="protect_large_stars"></a> Use range mask for large stars</p>
 </dt>
 <dd>
 <p>Enable up to 3 <em>RangeSelection</em> processes to isolate large stars for protection in the final mask.</p>
@@ -315,7 +371,7 @@
 </div>
 
 <div class="pidoc_subsection" id="__Usage_:_Examples__">
-   <h4 class="pidoc_subsectionTitle">2.6&emsp;<a id="combine"></a>Examples</h4>
+   <h4 class="pidoc_subsectionTitle">2.6&emsp;<a id="examples"></a>Examples</h4>
 <p>Let's look at some examples of what DSOMask can do using NGC 1499.</p>
 <img src="images/example1.png" alt=""/>
 <p>Let's start with the simplest settings. No star protection and using the source image as the mask. The following shows the resulting mask, which is just the gray scale starless version of the image.</p>
@@ -326,17 +382,17 @@
 <img src="images/example4.png" alt=""/>
 <p>And the resulting mask.</p>
 <img src="images/example5.png" alt=""/>
-<p>Now let's create a range mask, with star protection.</p>
+<p>For another example, let's use a range mask as the base and add star protection.</p>
 <img src="images/example6.png" alt=""/>
 <p>And the resulting mask.</p>
 <img src="images/example7.png" alt=""/>
 <p>And the mask applied to the source image.</p>
 <img src="images/example8.png" alt=""/>
-<p>Let's try and protect some of the bigger stars more.</p>
+<p>Now let's add some protection for the bigger stars. We'll use 3 successive <em>RangeSelection</em> processes. The first will be on the source image, and the next 2 on the previous range mask.</p>
 <img src="images/example9.png" alt=""/>
-<p>But first let's preview what the large star mask looks like with the current settings.</p>
+<p>First let's preview what the large star mask looks like with the current settings for the 3 <em>RangeSelection</em> processes.</p>
 <img src="images/example10.png" alt=""/>
-<p>Looks good, now let's see the final mask.</p>
+<p>Now let's see the final mask.</p>
 <img src="images/example11.png" alt=""/>
 </div>
 
@@ -346,7 +402,7 @@
 <div class="pidoc_section" id="__related_tools__">
    <h3 class="pidoc_sectionTitle">Related Tools</h3>
    <div id="related_tools">
-<p><a href="../../tools/RangeMask/RangeMask.html" title="../../tools/RangeMask/RangeMask.html">RangeMask</a>, <a href="../../tools/StarMask/StarMask.html" title="../../tools/StarMask/StarMask.html">StarMask</a>, <a href="../../tools/PixelMath/PixelMath.html" title="../../tools/PixelMath/PixelMath.html">PixelMath</a></p>
+<p><a href="../../tools/RangeSelection/RangeSelection.html" title="../../tools/RangeSelection/RangeSelection.html">RangeSelection</a>, <a href="../../tools/StarMask/StarMask.html" title="../../tools/StarMask/StarMask.html">StarMask</a>, <a href="../../tools/PixelMath/PixelMath.html" title="../../tools/PixelMath/PixelMath.html">PixelMath</a>, <a href="../../tools/ATrousWaveletTransform/ATrousWaveletTransform.html" title="../../tools/ATrousWaveletTransform/ATrousWaveletTransform.html">ATrousWaveletTransform</a></p>
    </div>
 </div>
 
@@ -357,7 +413,7 @@
 </div>
 
 <div id="footer">
-   <p>Generated by the PixInsight Documentation Compiler script version 1.6.2 on 2018-02-19 16:56:25 UTC</p>
+   <p>Generated by the PixInsight Documentation Compiler script version 1.6.2 on 2018-02-21 03:10:03 UTC</p>
 </div>
 <br/>
 <br/>

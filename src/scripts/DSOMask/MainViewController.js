@@ -4,87 +4,10 @@ function MainController(model, isViewTarget) {
 
    this.isViewTarget = isViewTarget;
 
-   this.help = new String("<p>A utility script to create a mask to protect " +
-      "background and stars allowing structures to be targeted " +
-      "for further processing.</p>" +
-
-      "<p>The script is designed to process non-linear images. " +
-      "For a linear image, first duplicate and then apply " +
-      "ScreenTransferFunction to duplicate. Run this script " +
-      "on the duplicate stretched image.</p>" +
-
-      "<p>This script uses some basic practices thare are " +
-      "well documented on the PixInsight forums as well as other " +
-      "internet forums.</p>" +
-
-      "<p>The base image for the mask can be one of two types. " +
-      "1) A range mask of the source image or 2) a gray scale copy " +
-      "of the original image with stars (first layer) removed using " +
-      "ATrousWaveletTransform.</p>" +
-
-      "<p>Either version of the base image above can be converted to " +
-      "a gray mask for more protection of the image target</p>" +
-
-      "<p>Additionally, one can add star protection to the mask. " +
-      "A star mask can be created either using the technique " +
-      "implemented in Utilities -> ClassicStarMask or using " +
-      "the standard StarMask process.</p>" +
-
-      "<p>Finally, one can use a series of range masks " +
-      "to isolate and protect larger stars not covered by the " +
-      "chosen star mask technique.</p>" +
-
-      "<p>The mask is constructed as follows:</p>" +
-
-      "<p>Base image is either a range mask or star less gray " +
-      "scale image. Let's call this <b>DSO</b></p>" +
-
-      "<p>If star protection is chosen then the selected " +
-      "technique will create a star mask. Let's call this <b>STARS</b></p>" +
-
-      "<p>If large star protection is chosen then range masks " +
-      "will create a large star mask. Let's call this <b>LSTARS</b></p>" +
-
-      "<p>If a gray percentage is chosen that is greater than " +
-      "0 (zero) then a solid image will be created with it's pixel " +
-      "values all set to the level of gray percentage. Let's call " +
-      "this <b>GRAY</b></p>" +
-
-      "<p>If a gray mask is being created (gray percentage > 0) " +
-      "then it's <b>MIN( (GRAY-(STARS+LSTARS)), DSO )</b></p>" +
-
-      "<p>Other wise it's <b>(DSO-(STARS+LSTARS))</b></p>" +
-
-      "<p>In both cases <b>STARS</b> and <b>LSTARS</b> are optional, with the " +
-      "exception being that <b>LSTARS</b> is only possible if <b>STARS</b> is " +
-      "present.</p>");
-
    this.setView = function(view) {
       this.view = view;
    };
 
-   this.showHelp = function() {
-         (new MessageBox(
-         this.help.toString(),
-         TITLE,
-         StdIcon_Warning,
-         StdButton_Ok
-         )).execute();
-   }
-/*
-   this.setImageView = function(view) {
-      if (view != null && view.isView) {
-         model.imageView = view;
-         this.view.imageViewList.currentView = model.imageView;
-      }
-      else {
-         model.imageView = null;
-         this.view.imageViewList.currentView = this.view.imageViewListNull;
-      }
-
-      this.enableControls();
-   };
-*/
    this.setImageWindow = function(window) {
       if (window != null && window.mainView.isView) {
         model.imageWindow = window;
@@ -1061,16 +984,6 @@ function MainView(model, controller) {
             }
          );
          this.imageViewListNull = this.imageViewList.currentView;
-
-         this.imageViewHelpButton = this.addToolButton(
-            this.imageViewPane,
-            ":/icons/comment.png",
-            controller.help.toString(),
-            function() {
-               controller.showHelp();
-            }
-         );
-
       }
    }
 
