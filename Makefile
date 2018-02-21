@@ -4,6 +4,7 @@
 VERSION = 1.2.1
 SOURCE_TARGET = src/scripts/DSOMask
 DOC_TARGET = doc/scripts/DSOMask
+
 RELEASE_TARGETS = $(SOURCE_TARGET) $(DOC_TARGET) install-how-to.txt LICENSE README.md
 
 PI_DIR = /Applications/PixInsight
@@ -22,7 +23,7 @@ script_install:
 	cp -rvf $(SOURCE_TARGET)/* $(PI_DIR)/src/scripts/DSOMask
 
 tar:
-	tar cvzf ../../release/DSOMask/DSOMask.$(VERSION).tar.gz $(TARGETS)
+	tar cvzf ../../release/DSOMask/DSOMask.$(VERSION).tar.gz $(RELEASE_TARGETS)
 
 zip:
-	zip -r ../../release/DSOMask/DSOMask.$(VERSION).zip $(TARGETS)
+	zip -r ../../release/DSOMask/DSOMask.$(VERSION).zip $(RELEASE_TARGETS)
