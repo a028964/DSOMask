@@ -1,9 +1,9 @@
 #define TITLE "DSOMask"
-#define VERSION "1.2.1"
+#define VERSION "1.2.2"
 
 #feature-id Utilities > DSOMask
 
-#feature-info <b>DSO Mask Version 1.2.1</b><br/>\
+#feature-info <b>DSO Mask Version 1.2.2</b><br/>\
    <br/>\
    Script for mask generation.<br/>\
    <br/>\
