@@ -4,6 +4,11 @@ DSOMask Script Changelog
 -------------------------------------------------------------------------------
            - v1.2.1:
 
+- Updated pidoc documentation.
+
+-------------------------------------------------------------------------------
+           - v1.2.1:
+
 - Added pidoc documentation.
 
 - Added packaged releases.
