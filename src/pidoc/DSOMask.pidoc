@@ -79,7 +79,8 @@
           The other method, if not using a \lref range_mask { range mask } for
           the base mask is a grayscale starless version of the source image.
           This image is created using e\ { ATrousWaveletTransform } with the
-          first layer removed.
+          first layer removed on a duplicate of the source image. The duplicate
+          is then subtracted from the source image to create the base mask.
 
           Call this image \s { BASE }.
         }
@@ -149,9 +150,8 @@
          using the settings defined in the \lref base_mask {base mask} section to create the base
          image for the mask.
 
-         Otherwise, the PixInsight \e { ATrousWaveletTransform } process will be executed on the source
-         image to create the base image for the mask. The \e { ATrousWaveletTransform } process will
-         have the first layer disabled to remove stars.
+         Otherwise, create a starless version of the source image using the
+         PixInsight \e { ATrousWaveletTransform } and \e { PixelMath } processes.
       }
 
       { \label gray Precent gray } {
