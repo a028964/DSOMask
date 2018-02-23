@@ -1,7 +1,7 @@
 #
 #  Makefile
 #
-VERSION = 1.2.2
+VERSION = 1.2.3
 SOURCE_TARGET = src/scripts/DSOMask
 DOC_TARGET = doc/scripts/DSOMask
 
