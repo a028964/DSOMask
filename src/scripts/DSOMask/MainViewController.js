@@ -1540,7 +1540,7 @@ function MainView(model, controller) {
 
             this.rangeSelectionsTreeBox.adjustToContents();
          }
-         this.rangeSelectionsPane.addStretch();
+//         this.rangeSelectionsPane.addStretch();
 
          {
             this.rangeSelectionLowerLimitPane = this.addPane(this.largeStarsGroupBox);
