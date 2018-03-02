@@ -2,6 +2,15 @@
 DSOMask Script Changelog
 ===============================================================================
 -------------------------------------------------------------------------------
+           - v1.3.0:
+
+- Changed to SectionBar for each group with CheckBox.
+- Change preview to CheckBox from Buttons.
+- Allowed for Star Mask and Large Star Mask to be independent as opposed to
+  requiring a Star Mask to be used in order to protect larger stars.
+- Updated pidoc documentation.
+
+-------------------------------------------------------------------------------
            - v1.2.3:
 
 - Updated pidoc documentation.

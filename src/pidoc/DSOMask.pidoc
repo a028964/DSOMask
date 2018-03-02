@@ -144,30 +144,12 @@
   \image Images/dso_settings.png
 
   \definition {
-
-      { \label range_mask Use range mask for base image } {
-         If selected, the PixInsight \e { RangeSelection } process will be executed on the source image
-         using the settings defined in the \lref base_mask {base mask} section to create the base
-         image for the mask.
-
-         Otherwise, create a starless version of the source image using the
-         PixInsight \e { ATrousWaveletTransform } and \e { PixelMath } processes.
-      }
-
       { \label gray Precent gray } {
          Controls the amount of grayness in the final mask. If this is set to 0 (zero) then the
          final mask will be that of the base mask.
 
          If this is set to a non-zero amount, then that will be used to build a gray mask first
          and then use the \e { minimum } function on the gray mask and the base mask.
-      }
-
-      { \label protect_stars Protect stars } {
-         If selected then a \lref star_mask {star mask} will be generated to apply star protection
-         in the final mask.
-
-         Optionally, a \lref large_star_mask { large star mask } for use in the final
-         mask to protect larger stars not covered in the star mask is enabled.
       }
 
       { Keep masks open } {
@@ -199,14 +181,20 @@
 
     \definition {
 
+      { \label range_mask Base Image Range Selection } {
+         If selected, the PixInsight \e { RangeSelection } process will be executed on the source image
+         using the settings defined in the \lref base_mask {base mask} section to create the base
+         image for the mask.
+
+         Otherwise, create a starless version of the source image using the
+         PixInsight \e { ATrousWaveletTransform } and \e { PixelMath } processes.
+      }
+
+
       { Preview } {
          Execute the \e { RangeSelection } process with the current settings and open a window
          with the results. The results can be applied to the source image using
          \lref apply_mask {apply mask} setting.
-      }
-
-      { Close Preview } {
-         Close the open base mask preview.
       }
 
       { Lower limit } {
@@ -233,14 +221,15 @@
   \image Images/dso_star_mask.png
     \definition {
 
+      { \label protect_stars Star Mask } {
+         If selected then a \lref star_mask {star mask} will be generated to apply star protection
+         in the final mask.
+      }
+
       { Preview } {
          Execute the \e { StarMask } process with the current settings and open a window
          with the results. The results can be applied to the source image using
          \lref apply_mask {apply mask} setting.
-      }
-
-      { Close Preview } {
-         Close the open star mask preview.
       }
 
       { \label classic_star_mask Use classic star mask } {
@@ -283,7 +272,7 @@
   \image Images/dso_large_stars.png
     \definition {
 
-      { \label protect_large_stars Use range mask for large stars } {
+      { \label protect_large_stars Larger Star Mask } {
          Enable up to 3 \e { RangeSelection } processes to isolate large stars for protection in
          the final mask.
       }
@@ -292,10 +281,6 @@
          Execute the \e { RangeSelection } process with the current settings and open a window
          with the results. The results can be applied to the source image using
          \lref apply_mask {apply mask} setting.
-      }
-
-      { Close Preview } {
-         Close the open star mask preview.
       }
 
       { Lower limit } {
@@ -351,8 +336,12 @@
   settings for the 3 \e { RangeSelection } processes.
   \image Images/example10.png
 
-  Now let's see the final mask.
+  Now let's apply the large star mask to the source image and invert it to
+  see how it looks.
   \image Images/example11.png
+
+  Now let's see the final mask.
+  \image Images/example12.png
   }
 }
 

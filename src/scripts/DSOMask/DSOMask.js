@@ -1,9 +1,9 @@
 #define TITLE "DSOMask"
-#define VERSION "1.2.3"
+#define VERSION "1.3.0"
 
 #feature-id Utilities > DSOMask
 
-#feature-info <b>DSO Mask Version 1.2.3</b><br/>\
+#feature-info <b>DSO Mask Version 1.3.0</b><br/>\
    <br/>\
    Script for mask generation.<br/>\
    <br/>\
@@ -20,6 +20,7 @@
 #include <pjsr/UndoFlag.jsh>
 #include <pjsr/NumericControl.jsh>
 #include <pjsr/ColorSpace.jsh>
+#include <pjsr/SectionBar.jsh>
 
 #include "Global.js"
 #include "MainModel.js"
@@ -42,7 +43,6 @@ function main() {
       controller.setImageView(Parameters.targetView);
    }
    else {
-//      controller.setImageView(ImageWindow.activeWindow.currentView);
       controller.setImageWindow(ImageWindow.activeWindow)
    }
 

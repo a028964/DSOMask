@@ -969,7 +969,7 @@ function MaskGenerator(model, view) {
       this.auxView.forceClose();
    };
 
-   this.addLargeStarsToStarMask = function() {
+   this.createLargeStarMask = function() {
 
       var rangeView = null;
 
@@ -1006,40 +1006,7 @@ function MaskGenerator(model, view) {
          }
       }
 
-      var P = new PixelMath;
-      with (P)
-      {
-         var expression1 = this.starMaskView.mainView.id + "+" + rangeView.mainView.id;
-         expression = expression1;
-         expression1 = "";
-         expression2 = "";
-         expression3 = "";
-         useSingleExpression = true;
-         symbols = "";
-         generateOutput = true;
-         singleThreaded = false;
-         use64BitWorkingImage = false;
-         rescale = false;
-         rescaleLower = 0;
-         rescaleUpper = 1;
-         truncate = true;
-         truncateLower = 0;
-         truncateUpper = 1;
-         createNewImage = false;
-         showNewImage = true;
-         newImageId = "";
-         newImageWidth = 0;
-         newImageHeight = 0;
-         newImageAlpha = false;
-         newImageColorSpace = PixelMath.prototype.SameAsTarget;
-         newImageSampleFormat = PixelMath.prototype.SameAsTarget;
-      }
-      P.executeOn(this.starMaskView.mainView,false);
-
-      if ( ! model.keepMasksOpen )
-      {
-        rangeView.forceClose()
-      }
+      this.largeStarMaskView = rangeView;
    };
 
    this.createRangeMask = function() {
@@ -1180,6 +1147,39 @@ function MaskGenerator(model, view) {
       n.forceClose();
    };
 
+   this.addLargeStarsToStarMask = function() {
+
+      var P = new PixelMath;
+      with (P)
+      {
+         var expression1 = this.starMaskView.mainView.id + "+" + this.largeStarMaskView.mainView.id;
+         expression = expression1;
+         expression1 = "";
+         expression2 = "";
+         expression3 = "";
+         useSingleExpression = true;
+         symbols = "";
+         generateOutput = true;
+         singleThreaded = false;
+         use64BitWorkingImage = false;
+         rescale = false;
+         rescaleLower = 0;
+         rescaleUpper = 1;
+         truncate = true;
+         truncateLower = 0;
+         truncateUpper = 1;
+         createNewImage = false;
+         showNewImage = true;
+         newImageId = "";
+         newImageWidth = 0;
+         newImageHeight = 0;
+         newImageAlpha = false;
+         newImageColorSpace = PixelMath.prototype.SameAsTarget;
+         newImageSampleFormat = PixelMath.prototype.SameAsTarget;
+      }
+      P.executeOn(this.starMaskView.mainView,false);
+   };
+
    this.assembleMask = function() {
 
       this.newMaskView = new ImageWindow( this.dsoMaskView.mainView.image.width,
@@ -1223,6 +1223,10 @@ function MaskGenerator(model, view) {
          }
          pm.executeOn(this.newMaskView.mainView, false);
 
+         if ( model.protectStars && model.useRangeSelectionsForLargeStars ) {
+           this.addLargeStarsToStarMask();
+         }
+
          if ( model.protectStars ) {
             var P = new PixelMath;
             with (P)
@@ -1253,6 +1257,37 @@ function MaskGenerator(model, view) {
                newImageSampleFormat = PixelMath.prototype.SameAsTarget;
             }
             P.executeOn(this.newMaskView.mainView,false);
+         }
+         else if ( model.useRangeSelectionsForLargeStars ) {
+           var P = new PixelMath;
+           with (P)
+           {
+              var expression1 = "$T-" + this.largeStarMaskView.mainView.id
+              expression = expression1;
+              expression1 = "";
+              expression2 = "";
+              expression3 = "";
+              useSingleExpression = true;
+              symbols = "";
+              generateOutput = true;
+              singleThreaded = false;
+              use64BitWorkingImage = false;
+              rescale = false;
+              rescaleLower = 0;
+              rescaleUpper = 1;
+              truncate = true;
+              truncateLower = 0;
+              truncateUpper = 1;
+              createNewImage = false;
+              showNewImage = true;
+              newImageId = "";
+              newImageWidth = 0;
+              newImageHeight = 0;
+              newImageAlpha = false;
+              newImageColorSpace = PixelMath.prototype.SameAsTarget;
+              newImageSampleFormat = PixelMath.prototype.SameAsTarget;
+           }
+           P.executeOn(this.newMaskView.mainView,false);
          }
 
          var P = new PixelMath;
@@ -1288,6 +1323,9 @@ function MaskGenerator(model, view) {
       }
       else
       {
+          if ( model.protectStars && model.useRangeSelectionsForLargeStars ) {
+            this.addLargeStarsToStarMask();
+          }
          if ( model.protectStars ) {
             var P = new PixelMath;
             with (P)
@@ -1319,15 +1357,45 @@ function MaskGenerator(model, view) {
             }
             P.executeOn(this.newMaskView.mainView,false);
          }
-      }
-
-   }
+         else if ( model.useRangeSelectionsForLargeStars ) {
+           var P = new PixelMath;
+           with (P)
+           {
+              var expression1 = "$T-" + this.largeStarMaskView.mainView.id
+              expression = expression1;
+              expression1 = "";
+              expression2 = "";
+              expression3 = "";
+              useSingleExpression = true;
+              symbols = "";
+              generateOutput = true;
+              singleThreaded = false;
+              use64BitWorkingImage = false;
+              rescale = false;
+              rescaleLower = 0;
+              rescaleUpper = 1;
+              truncate = true;
+              truncateLower = 0;
+              truncateUpper = 1;
+              createNewImage = false;
+              showNewImage = true;
+              newImageId = "";
+              newImageWidth = 0;
+              newImageHeight = 0;
+              newImageAlpha = false;
+              newImageColorSpace = PixelMath.prototype.SameAsTarget;
+              newImageSampleFormat = PixelMath.prototype.SameAsTarget;
+           }
+           P.executeOn(this.newMaskView.mainView,false);
+         }
+       }
+     };
 
    // Entry point for mask creation.
    this.createMask = function() {
 
       model.imageWindow.removeMask();
-      
+
       this.getSourceView();
 
       if ( model.protectStars )
@@ -1340,10 +1408,9 @@ function MaskGenerator(model, view) {
          {
             this.createStarMask();
          }
-
-         if ( model.useRangeSelectionsForLargeStars ) {
-            this.addLargeStarsToStarMask();
-         }
+      }
+      if ( model.useRangeSelectionsForLargeStars ) {
+         this.createLargeStarMask();
       }
 
       if ( model.useRangeSelectionForBase ) {
@@ -1358,6 +1425,7 @@ function MaskGenerator(model, view) {
       this.newMaskView.zoomFactor=12;
       this.newMaskView.fitWindow();
       this.newMaskView.zoomToOptimalFit();
+
       this.newMaskView.show();
 
       model.dsoMaskView = this.newMaskView;
@@ -1375,6 +1443,9 @@ function MaskGenerator(model, view) {
          if ( model.protectStars )
          {
             this.starMaskView.forceClose();
+         }
+         if ( model.useRangeSelectionsForLargeStars ) {
+           this.largeStarMaskView.forceClose();
          }
          this.dsoMaskView.forceClose();
       }
